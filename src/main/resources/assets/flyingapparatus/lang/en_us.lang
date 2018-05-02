@@ -1,8 +1,8 @@
-item.flyingapparatus.apparatus_basic.name=Aerostatic Levitator (Basic)
-item.flyingapparatus.apparatus_hardened.name=Aerostatic Levitator (Hardened)
-item.flyingapparatus.apparatus_reinforced.name=Aerostatic Levitator (Reinforced)
-item.flyingapparatus.apparatus_signalum.name=Aerostatic Levitator (Signalum)
-item.flyingapparatus.apparatus_resonant.name=Aerostatic Levitator (Resonant)
+item.flyingapparatus.apparatus_basic.name=Manned Maneuvering Unit (Basic)
+item.flyingapparatus.apparatus_hardened.name=Manned Maneuvering Unit (Hardened)
+item.flyingapparatus.apparatus_reinforced.name=Manned Maneuvering Unit (Reinforced)
+item.flyingapparatus.apparatus_signalum.name=Manned Maneuvering Unit (Signalum)
+item.flyingapparatus.apparatus_resonant.name=Manned Maneuvering Unit (Resonant)
 
 item.flyingapparatus.apparatus_handheld.name=Handheld Controller
 
@@ -11,7 +11,9 @@ item.flyingapparatus.rocket_pants_hardened.name=Rocket Pants (Hardened)
 item.flyingapparatus.rocket_pants_reinforced.name=Rocket Pants (Reinforced)
 item.flyingapparatus.rocket_pants_signalum.name=Rocket Pants (Signalum)
 item.flyingapparatus.rocket_pants_resonant.name=Rocket Pants (Resonant)
-
+item.flyingapparatus.material.equipmentFrame.name=Equipment Frame
+item.flyingapparatus.material.thrusterComponentBasic.name=Basic Thruster Component
+item.flyingapparatus.material.fluxTube.name=Flux Tube
 
 block.flyingapparatus.solid_aerothenium.name=Stabilised Aerotheum
 
@@ -19,21 +21,20 @@ key.flyingapparatus.category=Flying Apparatus
 key.flyingapparatus.enable_apparatus.desc=Enable device
 key.flyingapparatus.toggle_apparatus.desc=Toggle device function
 
-
-info.flyingapparatus.apparatus_handheld.controls_levitators=Controls Levitators
+info.flyingapparatus.apparatus_handheld.controls_levitators=Controls flying devices
 info.flyingapparatus.apparatus_handheld.holdit=Yes, you actually have to hold it.
 
 info.flyingapparatus.apparatus_handheld.keybind=Press (%s) to toggle levitator.
 info.flyingapparatus.apparatus_handheld.strafe_left=Hold (%s) to boost left.
 info.flyingapparatus.apparatus_handheld.strafe_right=Hold (%s) to boost right.
-info.flyingapparatus.apparatus_handheld.mode.0=Controls Levitator
-info.flyingapparatus.apparatus_handheld.mode.1=Controls Accessories
+info.flyingapparatus.apparatus_handheld.mode.0=Controls MMU
+info.flyingapparatus.apparatus_handheld.mode.1=Controls Boosters
 info.flyingapparatus.apparatus_handheld.mode.2=Controls Entire Eqipment
 info.flyingapparatus.apparatus_handheld.change_mode=Press (%s) to change mode
 
 info.flyingapparatus.apparatus_description.def=Enables flying capabilities
 info.flyingapparatus.apparatus_description.fuel=Uses Aerotheum as fuel
-info.flyingapparatus.apparatus_description.fall_damage=Negates fall damage
+info.flyingapparatus.apparatus_description.fall_damage=Negates fall damage (%s)
 info.flyingapparatus.apparatus_info.fuel=Fuel:
 
 info.flyingapparatus.rocket_pants_description.def=Enables "flying" capabilities

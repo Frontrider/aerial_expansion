@@ -18,6 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static hu.frontrider.flyingapparatus.FlyingApparatus.random;
 import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
+import static hu.frontrider.flyingapparatus.items.ItemWithFluid.drainFuel;
 
 @Mod.EventBusSubscriber
 public class ApparatusParticleHandler {
@@ -32,51 +33,53 @@ public class ApparatusParticleHandler {
         if (nbt != null) {
             if (nbt.hasKey(ACTIVE_NAME)) {
                 if (nbt.getBoolean(ACTIVE_NAME)) {
-                    final World world = player.world;
-                    emitDirection(world,
-                            player.posX,
-                            player.posY + 1,
-                            player.posZ,
-                            random.nextDouble(),
-                            -1 + random.nextDouble(),
-                            random.nextDouble() * -1 + random.nextDouble());
-
-                    final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
-
-                    final Vec3d forward = player.getForward();
-
-
-                    if (gameSettings.keyBindForward.isKeyDown()) {
-                        final Vec3d backward = forward.scale(-1);
-                        emitDirection(world,player.posX,player.posY+1,player.posZ,backward.x,0,backward.z);
-                    }
-                    if (gameSettings.keyBindBack.isKeyDown()) {
-                        emitDirection(world,player.posX,player.posY+1,player.posZ,forward.x,0,forward.z);
-                    }
-                    if (gameSettings.keyBindLeft.isKeyDown()) {
-                        emitDirection(world,player.posX,player.posY+1,-player.posZ,forward.z, 0, forward.x);
-                    }
-                    if (gameSettings.keyBindRight.isKeyDown()) {
-                       emitDirection(world,player.posX,player.posY+1,player.posZ,forward.z, 0, -forward.x);
-                    }
-
-                    if (gameSettings.keyBindSneak.isKeyDown()) {
+                    if (drainFuel(stack, 1, false)) {
+                        final World world = player.world;
                         emitDirection(world,
                                 player.posX,
-                                player.posY + 2,
-                                player.posZ,
-                                random.nextDouble(),
-                                1 + random.nextDouble(),
-                                random.nextDouble() * -1 + random.nextDouble());
-                    }
-                    if (gameSettings.keyBindJump.isKeyDown()) {
-                        emitDirection(world,
-                                player.posX,
-                                player.posY,
+                                player.posY + 1,
                                 player.posZ,
                                 random.nextDouble(),
                                 -1 + random.nextDouble(),
                                 random.nextDouble() * -1 + random.nextDouble());
+
+                        final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
+
+                        final Vec3d forward = player.getForward();
+
+
+                        if (gameSettings.keyBindForward.isKeyDown()) {
+                            final Vec3d backward = forward.scale(-1);
+                            emitDirection(world, player.posX, player.posY + 1, player.posZ, backward.x, 0, backward.z);
+                        }
+                        if (gameSettings.keyBindBack.isKeyDown()) {
+                            emitDirection(world, player.posX, player.posY + 1, player.posZ, forward.x, 0, forward.z);
+                        }
+                        if (gameSettings.keyBindLeft.isKeyDown()) {
+                            emitDirection(world, player.posX, player.posY + 1, -player.posZ, forward.z, 0, forward.x);
+                        }
+                        if (gameSettings.keyBindRight.isKeyDown()) {
+                            emitDirection(world, player.posX, player.posY + 1, player.posZ, forward.z, 0, -forward.x);
+                        }
+
+                        if (gameSettings.keyBindSneak.isKeyDown()) {
+                            emitDirection(world,
+                                    player.posX,
+                                    player.posY + 2,
+                                    player.posZ,
+                                    random.nextDouble(),
+                                    1 + random.nextDouble(),
+                                    random.nextDouble() * -1 + random.nextDouble());
+                        }
+                        if (gameSettings.keyBindJump.isKeyDown()) {
+                            emitDirection(world,
+                                    player.posX,
+                                    player.posY,
+                                    player.posZ,
+                                    random.nextDouble(),
+                                    -1 + random.nextDouble(),
+                                    random.nextDouble() * -1 + random.nextDouble());
+                        }
                     }
                 }
             }

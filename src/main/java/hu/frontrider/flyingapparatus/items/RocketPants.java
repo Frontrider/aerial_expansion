@@ -70,11 +70,11 @@ public class RocketPants extends ItemWithFluid {
     public static void launchHandler(ItemStack stack, EntityPlayer player) {
         final Item item = stack.getItem();
 
-        if (item instanceof FlyingApparatusItem && drainFuel(stack, 1)) {
-            final Vec3d playerLookVec = player.getLookVec();
-            player.motionY = playerLookVec.y * 6;
-            player.motionX = playerLookVec.x * 6;
-            player.motionZ = playerLookVec.z * 6;
+        if (item instanceof FlyingApparatusItem && drainFuel(stack, 1, false)) {
+            final Vec3d playerLookVec = player.getLookVec().scale(60);
+            player.motionY = playerLookVec.y;
+            player.motionX = playerLookVec.x;
+            player.motionZ = playerLookVec.z;
         }
     }
 }

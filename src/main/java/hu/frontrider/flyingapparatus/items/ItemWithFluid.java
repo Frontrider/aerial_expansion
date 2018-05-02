@@ -79,12 +79,18 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
     }
 
     public static boolean drainFuel(ItemStack itemStack, int amount) {
+        return drainFuel(itemStack, amount, true);
+    }
+
+    public static boolean drainFuel(ItemStack itemStack, int amount, boolean doDrain) {
         if (itemStack.hasTagCompound()) {
             final NBTTagCompound tagCompound = itemStack.getTagCompound();
             if (tagCompound.hasKey(CAPACTIY)) {
                 final int capacity = tagCompound.getInteger(CAPACTIY);
                 if (capacity > amount) {
-                    tagCompound.setInteger(CAPACTIY, capacity - amount);
+                    if (doDrain) {
+                        tagCompound.setInteger(CAPACTIY, capacity - amount);
+                    }
                     return true;
                 }
             }

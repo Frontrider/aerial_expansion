@@ -36,7 +36,8 @@ public class Controls {
         final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
         final ItemStack chest = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         final Item item = chest.getItem();
-        final ItemStack handheld = player.hasItemInSlot(EntityEquipmentSlot.MAINHAND) ? player.getHeldItem(EnumHand.MAIN_HAND) : player.getHeldItem(EnumHand.OFF_HAND);
+        final ItemStack mainHand = player.getHeldItem(EnumHand.MAIN_HAND);
+        final ItemStack offhand = player.getHeldItem(EnumHand.OFF_HAND);
 
         if (item instanceof FlyingApparatusItem) {
             if (chest.hasTagCompound()) {
@@ -48,12 +49,16 @@ public class Controls {
                     return;
             } else
                 return;
-            player.motionY = 0;
-            drainFuel(chest,1);
-            if(!(handheld.getItem() instanceof ApparatusHandHeld))
-            {
-                player.motionZ =0;
-                player.motionX =0;
+
+            if(drainFuel(chest, 1)) {
+                player.motionY = 0;
+            }
+            else {
+                return;
+            }
+            if (!(mainHand.getItem() instanceof ApparatusHandHeld) && !(offhand.getItem() instanceof ApparatusHandHeld)) {
+                player.motionZ = 0;
+                player.motionX = 0;
                 return;
             }
 

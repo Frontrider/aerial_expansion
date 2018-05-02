@@ -1,0 +1,29 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "builtin/generated",
+    "textures": {
+      "layer0": "blocks/dirt"
+    },
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "type": {
+      "equipmentframe": {
+        "textures": {
+          "layer0": "flyingapparatus:items/material/equipment_frame"
+        }
+      },
+      "thrustercomponentbasic": {
+        "textures": {
+          "layer0": "flyingapparatus:items/material/thruster_component_basic"
+        }
+      },
+      "fluxtube": {
+        "textures": {
+          "layer0": "flyingapparatus:items/material/flux_tube"
+        }
+      }
+    }
+  }
+}

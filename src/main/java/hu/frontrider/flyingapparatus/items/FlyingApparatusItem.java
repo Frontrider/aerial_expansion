@@ -34,16 +34,17 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
 
     private final boolean negatesFallDamage;
     private final double movementFactor;
+    private final int falldamageCost;
 
     public FlyingApparatusItem(int capacity, String registryName) {
-        this(capacity, registryName, false, .1);
+        this(capacity, registryName, false, .1,500);
+    }
+    
+    public FlyingApparatusItem(int capacity, String registryName, boolean negatesFallDamage,int fallDamageCost) {
+        this(capacity, registryName, negatesFallDamage, .1,fallDamageCost);
     }
 
-    public FlyingApparatusItem(int capacity, String registryName, boolean negatesFallDamage) {
-        this(capacity, registryName, negatesFallDamage, .1);
-    }
-
-    public FlyingApparatusItem(int capacity, String registryName, boolean negatesFallDamage, double movementFactor) {
+    public FlyingApparatusItem(int capacity, String registryName, boolean negatesFallDamage, double movementFactor,int fallDamageCost) {
         super(TFFluids.fluidAerotheum, capacity);
         this.negatesFallDamage = negatesFallDamage;
         this.maxStackSize = 1;
@@ -51,6 +52,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
         this.setMaxDamage(capacity);
         this.setRegistryName(FlyingApparatus.MODID, registryName);
         this.setUnlocalizedName(FlyingApparatus.MODID + "." + registryName);
+        this.falldamageCost = fallDamageCost;
 
         this.setCreativeTab(CreativeTabs.TRANSPORTATION);
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
@@ -101,6 +103,11 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
         return movementFactor;
     }
 
+    public int getFalldamageCost()
+    {
+        return falldamageCost;
+    }
+
     /* CAPABILITIES */
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
@@ -130,7 +137,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
                         if (nbt.hasKey(ACTIVE_NAME)) {
                             final boolean active = nbt.getBoolean(ACTIVE_NAME);
                             if (active) {
-                                if (FlyingApparatusItem.drainFuel(stack, 1)) {
+                                if (FlyingApparatusItem.drainFuel(stack, 1, false)) {
                                     if (!player.hasNoGravity()) {
                                         player.setNoGravity(true);
                                     }
@@ -147,7 +154,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
 
     public static void handleVerticalMovement(ItemStack stack, EntityPlayer player, boolean upwards) {
         final Item item = stack.getItem();
-        if (item instanceof FlyingApparatusItem &&  drainFuel(stack,1)) {
+        if (item instanceof FlyingApparatusItem &&  drainFuel(stack,1, false)) {
             if (upwards) {
                 player.motionY = ((FlyingApparatusItem) item).getMotion();
             } else {
@@ -159,7 +166,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
     public static void handleStrafe(ItemStack stack, EntityPlayer player, boolean left){
         final Item item = stack.getItem();
 
-        if (item instanceof FlyingApparatusItem &&  drainFuel(stack,1)) {
+        if (item instanceof FlyingApparatusItem &&  drainFuel(stack,1, false)) {
             if (left) {
                 player.moveStrafing = (float) ((FlyingApparatusItem) item).getMotion();
             } else {
@@ -167,4 +174,6 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
             }
         }
     }
+
+
 }

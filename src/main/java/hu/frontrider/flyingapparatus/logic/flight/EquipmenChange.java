@@ -29,11 +29,11 @@ public class EquipmenChange {
                         if (nbt.hasKey(ACTIVE_NAME)) {
                             final boolean active = nbt.getBoolean(ACTIVE_NAME);
                             if (active) {
-                                if (FlyingApparatusItem.drainFuel(chest, 1)) {
+                                if (FlyingApparatusItem.drainFuel(chest, 1, false)) {
                                     if (player.hasNoGravity() == active) {
-                                        player.setNoGravity(!active);
+                                       // player.setNoGravity(!active);
                                     } else {
-                                        player.setNoGravity(false);
+                                      //  player.setNoGravity(false);
                                     }
                                 }
                             }
