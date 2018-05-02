@@ -62,17 +62,14 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
                 if (doFill) {
                     addAmount(container, space);
                 }
-            }
-            if (remaining < 0) {
-
+            } else {
                 if (resource.amount < space) {
                     if (doFill)
-                    addAmount(container, resource.amount);
+                        addAmount(container, resource.amount);
                     return resource.amount;
                 } else {
                     if (doFill)
-                    addAmount(container, space);
-                    return space;
+                        addAmount(container, space);
                 }
             }
             return space;
