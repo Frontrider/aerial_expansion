@@ -8,11 +8,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class Fall {
 
-
+    @SideOnly(Side.SERVER)
     @SubscribeEvent
     public static void handleFall(LivingFallEvent event) {
         if (event.getDistance() > 3) {

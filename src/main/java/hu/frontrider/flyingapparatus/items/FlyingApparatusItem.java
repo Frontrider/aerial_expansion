@@ -152,7 +152,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
 
     public static void handleVerticalMovement(ItemStack stack, EntityPlayer player, boolean upwards) {
         final Item item = stack.getItem();
-        if (item instanceof FlyingApparatusItem &&  drainFuel(stack,1, false)) {
+        if (item instanceof FlyingApparatusItem) {
             if (upwards) {
                 player.motionY = ((FlyingApparatusItem) item).getMotion();
             } else {
@@ -164,7 +164,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
     public static void handleStrafe(ItemStack stack, EntityPlayer player, boolean left){
         final Item item = stack.getItem();
 
-        if (item instanceof FlyingApparatusItem &&  drainFuel(stack,1, false)) {
+        if (item instanceof FlyingApparatusItem) {
             if (left) {
                 player.moveStrafing = (float) ((FlyingApparatusItem) item).getMotion();
             } else {
@@ -172,6 +172,4 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
             }
         }
     }
-
-
 }

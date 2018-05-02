@@ -46,7 +46,7 @@ public class RocketPants extends ItemWithFluid {
         infornamtion.add(StringHelper.getNoticeText(StringHelper.localize("info.flyingapparatus.apparatus_info.fuel") + " " + stored + "/" + max));
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "NullableProblems"})
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack heldItem = player.getHeldItem(hand);

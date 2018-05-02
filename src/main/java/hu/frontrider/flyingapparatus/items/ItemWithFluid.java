@@ -9,25 +9,25 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Map;
 
 public abstract class ItemWithFluid extends Item implements IFluidContainerItem, IEnchantableItem {
 
-    private final Fluid fluid;
+    private final String fluid;
     private final int capacity;
-
-    private static final String CAPACTIY = "capacity";
+    private static final String STORED = "stored";
 
     ItemWithFluid(Fluid fluid, int capacity) {
-        this.fluid = fluid;
+        this.fluid = fluid.getName();
         this.capacity = capacity;
     }
 
     @Override
     public FluidStack getFluid(ItemStack container) {
-        return new FluidStack(fluid, getStored(container));
+        return new FluidStack(FluidRegistry.getFluid(fluid), getStored(container));
     }
 
     @Override
@@ -55,7 +55,7 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
 
     @Override
     public int fill(ItemStack container, FluidStack resource, boolean doFill) {
-        if (resource.getFluid() == fluid && resource.amount > 0) {
+        if (resource.getFluid() == FluidRegistry.getFluid(fluid) && resource.amount > 0) {
             final int space = getEmptySpace(container);
             final int remaining = resource.amount - space;
             if (remaining >= 0) {
@@ -64,8 +64,15 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
                 }
             }
             if (remaining < 0) {
-                if (doFill) {
+
+                if (resource.amount < space) {
+                    if (doFill)
+                    addAmount(container, resource.amount);
+                    return resource.amount;
+                } else {
+                    if (doFill)
                     addAmount(container, space);
+                    return space;
                 }
             }
             return space;
@@ -85,11 +92,11 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
     public static boolean drainFuel(ItemStack itemStack, int amount, boolean doDrain) {
         if (itemStack.hasTagCompound()) {
             final NBTTagCompound tagCompound = itemStack.getTagCompound();
-            if (tagCompound.hasKey(CAPACTIY)) {
-                final int capacity = tagCompound.getInteger(CAPACTIY);
+            if (tagCompound.hasKey(STORED)) {
+                final int capacity = tagCompound.getInteger(STORED);
                 if (capacity > amount) {
                     if (doDrain) {
-                        tagCompound.setInteger(CAPACTIY, capacity - amount);
+                        tagCompound.setInteger(STORED, capacity - amount);
                     }
                     return true;
                 }
@@ -103,11 +110,11 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
             stack.setTagCompound(new NBTTagCompound());
         }
         final NBTTagCompound nbt = stack.getTagCompound();
-        if (!nbt.hasKey(CAPACTIY)) {
-            nbt.setInteger(CAPACTIY, amount);
+        if (!nbt.hasKey(STORED)) {
+            nbt.setInteger(STORED, amount);
         } else {
-            final int capacity = nbt.getInteger(CAPACTIY);
-            nbt.setInteger(CAPACTIY, capacity + amount);
+            final int capacity = nbt.getInteger(STORED);
+            nbt.setInteger(STORED, capacity + amount);
         }
     }
 
@@ -116,7 +123,7 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
         if (!stack.hasTagCompound()) {
             stack.setTagCompound(new NBTTagCompound());
         }
-        return stack.getTagCompound().getInteger(CAPACTIY);
+        return stack.getTagCompound().getInteger(STORED);
     }
 
     public static int getEmptySpace(ItemStack stack) {
