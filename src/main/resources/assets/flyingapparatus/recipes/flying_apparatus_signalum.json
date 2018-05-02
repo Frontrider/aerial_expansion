@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "SFS",
+    "APA"
+  ],
+  "key": {
+    "C": {
+      "item": "thermalfoundation:material",
+      "data": 358
+    },
+    "F": {
+      "item": "flyingapparatus:apparatus_reinforced"
+    },
+    "S": {
+      "item": "thermalfoundation:material",
+      "data": 1025
+    },"P": {
+      "item": "thermalfoundation:material",
+      "data": 17
+    },"A": {
+      "item": "thermalfoundation:material",
+      "data": 357
+    }
+  },
+  "result": {
+    "item": "flyingapparatus:apparatus_signalum",
+    "data":0
+  }
+}

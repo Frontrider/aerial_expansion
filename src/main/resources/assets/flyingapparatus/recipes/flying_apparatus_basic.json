@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C C",
+    "SFS",
+    "APA"
+  ],
+  "key": {
+    "C": {
+      "item": "thermalfoundation:material",
+      "data": 515
+    },
+    "F": {
+      "item": "thermalfoundation:material",
+      "data": 640
+    },
+    "S": {
+      "item": "thermalfoundation:material",
+      "data": 352
+    },"P": {
+      "item": "thermalfoundation:material",
+      "data": 320
+    },"A": {
+      "item": "thermalfoundation:material",
+      "data": 1026
+    }
+  },
+  "result": {
+    "item": "flyingapparatus:apparatus_basic",
+    "data":0
+  }
+}

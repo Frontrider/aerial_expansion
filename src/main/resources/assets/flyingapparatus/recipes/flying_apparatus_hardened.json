@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "SFS",
+    "APA"
+  ],
+  "key": {
+    "C": {
+      "item": "thermalfoundation:material",
+      "data": 512
+    },
+    "F": {
+      "item": "flyingapparatus:apparatus_basic"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "dustObsidian"
+    },"P": {
+      "item": "thermalfoundation:material",
+      "data": 224
+    },"A": {
+      "item": "thermalfoundation:material",
+      "data": 354
+    }
+  },
+  "result": {
+    "item": "flyingapparatus:apparatus_hardened",
+    "data":0
+  }
+}

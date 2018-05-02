@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "SFS",
+    "APA"
+  ],
+  "key": {
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "F": {
+      "item": "flyingapparatus:apparatus_hardened"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "blockGlasshardened"
+    },"P": {
+      "item": "thermalfoundation:material",
+      "data": 224
+    },"A": {
+      "item": "thermalfoundation:material",
+      "data": 353
+    }
+  },
+  "result": {
+    "item": "flyingapparatus:apparatus_reinforced",
+    "data":0
+  }
+}
