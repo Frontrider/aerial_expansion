@@ -34,7 +34,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
 
     private final boolean negatesFallDamage;
     private final double movementFactor;
-    private final int falldamageCost;
+    private final int fallDamageCost;
 
     public FlyingApparatusItem(int capacity, String registryName) {
         this(capacity, registryName, false, .1,500);
@@ -52,7 +52,7 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
         this.setMaxDamage(capacity);
         this.setRegistryName(FlyingApparatus.MODID, registryName);
         this.setUnlocalizedName(FlyingApparatus.MODID + "." + registryName);
-        this.falldamageCost = fallDamageCost;
+        this.fallDamageCost = fallDamageCost;
 
         this.setCreativeTab(CreativeTabs.TRANSPORTATION);
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
@@ -103,9 +103,9 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
         return movementFactor;
     }
 
-    public int getFalldamageCost()
+    public int getFallDamageCost()
     {
-        return falldamageCost;
+        return fallDamageCost;
     }
 
     /* CAPABILITIES */
@@ -113,8 +113,6 @@ public class FlyingApparatusItem extends ItemWithFluid implements IEnchantableIt
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
         return new FluidContainerItemWrapper(stack, this, true, false);
     }
-
-
 
     @Override
     public boolean canEnchant(ItemStack stack, Enchantment enchantment) {

@@ -1,6 +1,5 @@
 package hu.frontrider.flyingapparatus.client;
 
-import com.sun.istack.internal.NotNull;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.player.EntityPlayer;
@@ -86,7 +85,7 @@ public class ApparatusParticleHandler {
         }
     }
 
-    private static void emitDirection(World world, double posX, double posY, double posZ,@NotNull Vec3d direction){
+    private static void emitDirection(World world, double posX, double posY, double posZ, Vec3d direction){
         emitDirection(world, posX, posY, posZ, direction.x,direction.y,direction.z);
     }
     private static void emitDirection(World world, double posX, double posY, double posZ, double directionX, double directionY, double directionZ){

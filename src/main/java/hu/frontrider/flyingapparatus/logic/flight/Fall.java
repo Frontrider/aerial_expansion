@@ -22,7 +22,7 @@ public class Fall {
             final Item item = stack.getItem();
             if (item instanceof FlyingApparatusItem) {
                 if (((FlyingApparatusItem) item).negatesFallDamage()) {
-                    if (FlyingApparatusItem.drainFuel(stack, ((FlyingApparatusItem) item).getFalldamageCost(), true)) {
+                    if (FlyingApparatusItem.drainFuel(stack, ((FlyingApparatusItem) item).getFallDamageCost(), true)) {
                         event.setDamageMultiplier(0);
                     }
                 }
