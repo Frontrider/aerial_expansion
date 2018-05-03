@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "flyingapparatus:items/material/flux_tube"
+  }
+}

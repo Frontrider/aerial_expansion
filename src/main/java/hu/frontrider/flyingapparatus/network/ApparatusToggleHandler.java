@@ -22,24 +22,17 @@ public class ApparatusToggleHandler implements IMessageHandler<ApparatusToggleMe
 
         if (chestSlot.getItem() instanceof FlyingApparatusItem)
             if (player.getHeldItemOffhand().getItem() == ItemRegistry.handheld || player.getHeldItemMainhand().getItem() == ItemRegistry.handheld) {
-                toggle(chestSlot, player);
-
+                NBTTagCompound nbt = chestSlot.getTagCompound();
+                if (nbt == null) {
+                    nbt = new NBTTagCompound();
+                }
+                if(nbt.hasKey(ACTIVE_NAME)){
+                    nbt.setBoolean(ACTIVE_NAME,!nbt.getBoolean(ACTIVE_NAME));
+                }
+                else
+                nbt.setBoolean(ACTIVE_NAME, true);
+                chestSlot.setTagCompound(nbt);
             }
         return null;
     }
-
-    private void toggle(ItemStack itemStack, EntityPlayerMP player) {
-        NBTTagCompound nbt = itemStack.getTagCompound();
-        if (nbt == null) {
-            nbt = new NBTTagCompound();
-        }
-        if (nbt.hasKey(ACTIVE_NAME)) {
-            nbt.setBoolean(ACTIVE_NAME, !nbt.getBoolean(ACTIVE_NAME));
-        } else {
-            nbt.setBoolean(ACTIVE_NAME, true);
-        }
-        itemStack.setTagCompound(nbt);
-
-    }
-
 }

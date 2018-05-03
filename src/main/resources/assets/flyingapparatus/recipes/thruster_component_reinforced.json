@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    "P P",
+    "S S"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plateElectrum"
+    },
+    "S": {
+      "item": "thermalfoundation:material",
+      "data": 514
+    },
+    "R": {
+
+      "type": "forge:ore_dict",
+      "ore": "blockRockWool"
+    }
+  },
+  "result": {
+    "item": "flyingapparatus:thruster_component_reinforced",
+    "data": 0
+  }
+}

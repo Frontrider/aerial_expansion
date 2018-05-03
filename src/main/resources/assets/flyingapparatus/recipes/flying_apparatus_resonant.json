@@ -19,9 +19,9 @@
     },"P": {
       "item": "thermalfoundation:material",
       "data": 1024
-    },"A": {
-      "item": "thermalfoundation:material",
-      "data": 359
+    },"A": {"A": {
+      "item": "flyingapparatus:thruster_component_resonant"
+    }
     }
   },
   "result": {

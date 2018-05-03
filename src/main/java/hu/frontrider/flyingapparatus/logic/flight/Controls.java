@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -18,11 +19,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
-import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.handleStrafe;
-import static hu.frontrider.flyingapparatus.items.ItemWithFluid.drainFuel;
+import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.drainFuel;
 
 @Mod.EventBusSubscriber
 public class Controls {
+
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -33,49 +34,72 @@ public class Controls {
                 && !player.hasItemInSlot(EntityEquipmentSlot.OFFHAND)))
             return;
 
-        final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
         final ItemStack chest = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
         final Item item = chest.getItem();
-        final ItemStack mainHand = player.getHeldItem(EnumHand.MAIN_HAND);
-        final ItemStack offhand = player.getHeldItem(EnumHand.OFF_HAND);
+
+        final ItemStack handItem = player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ApparatusHandHeld ? player.getHeldItem(EnumHand.MAIN_HAND) : player.getHeldItem(EnumHand.OFF_HAND);
 
         if (item instanceof FlyingApparatusItem) {
-            if (chest.hasTagCompound()) {
-                final NBTTagCompound nbt = chest.getTagCompound();
-                if (nbt.hasKey(ACTIVE_NAME)) {
-                    if (!nbt.getBoolean(ACTIVE_NAME))
-                        return;
-                } else
+            NBTTagCompound nbt = chest.getTagCompound();
+            if (nbt != null) {
+                if (!nbt.getBoolean(ACTIVE_NAME)) {
                     return;
-            } else
-                return;
-
-            if(drainFuel(chest, 1)) {
-                player.motionY = 0;
-            }
-            else {
-                return;
-            }
-            if (!(mainHand.getItem() instanceof ApparatusHandHeld) && !(offhand.getItem() instanceof ApparatusHandHeld)) {
-                player.motionZ = 0;
-                player.motionX = 0;
-                return;
-            }
-
-            if (gameSettings.keyBindJump.isKeyDown()) {
-                FlyingApparatusItem.handleVerticalMovement(chest, player, true);
+                }
             } else {
+                return;
+            }
+
+
+            if (!(handItem.getItem() instanceof ApparatusHandHeld)) {
+                player.motionX = 0;
+                player.motionZ = 0;
+                return;
+            }
+
+            final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
+            if (ClientProxy.BOOST.isKeyDown()) {
+
+                if (drainFuel(chest, 10, true)) {
+                    player.motionY = 0;
+                } else {
+                    return;
+                }
+                final Vec3d forward = player.getForward();
+                if (gameSettings.keyBindForward.isKeyDown()) {
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, forward.x, 0.0, forward.z);
+                }
+                if (gameSettings.keyBindBack.isKeyDown()) {
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, -forward.x, 0.0, -forward.z);
+                }
+
+                if (gameSettings.keyBindLeft.isKeyDown()) {
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, -forward.z, 0.0, forward.x);
+                }
+
+                if (gameSettings.keyBindRight.isKeyDown()) {
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, forward.z, 0.0, -forward.x);
+                }
+                if (gameSettings.keyBindJump.isKeyDown()) {
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, 0.0, 1, 0.0);
+                }
                 if (gameSettings.keyBindSneak.isKeyDown()) {
-                    FlyingApparatusItem.handleVerticalMovement(chest, player, false);
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, 0.0, -1, 0.0);
+                }
+            } else {
+                if (drainFuel(chest, 1, true)) {
+                    player.motionY = 0;
+                } else {
+                    return;
+                }
+                if (gameSettings.keyBindJump.isKeyDown()) {
+                    FlyingApparatusItem.handleVerticalMovement((FlyingApparatusItem) chest.getItem(), player, true);
+                } else {
+                    if (gameSettings.keyBindSneak.isKeyDown()) {
+                        FlyingApparatusItem.handleVerticalMovement((FlyingApparatusItem) chest.getItem(), player, false);
+                    }
                 }
             }
-            if (ClientProxy.STRAFE_LEFT.isKeyDown()) {
-                handleStrafe(chest, player, true);
-            }
-
-            if (ClientProxy.STRAFE_RIGHT.isKeyDown()) {
-                handleStrafe(chest, player, false);
-            }
         }
+
     }
 }

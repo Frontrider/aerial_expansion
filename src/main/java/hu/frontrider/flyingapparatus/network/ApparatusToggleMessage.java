@@ -5,13 +5,17 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class ApparatusToggleMessage implements IMessage {
 
+
     public ApparatusToggleMessage() {
 
     }
 
-    @Override
-    public void fromBytes(ByteBuf byteBuf) {
+    public ApparatusToggleMessage(boolean mode)
+    {
+    }
 
+    @Override
+    public void fromBytes(ByteBuf byteBuf){
     }
 
     @Override

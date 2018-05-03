@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static hu.frontrider.flyingapparatus.FlyingApparatus.random;
 import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
-import static hu.frontrider.flyingapparatus.items.ItemWithFluid.drainFuel;
+import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.drainFuel;
 
 @Mod.EventBusSubscriber
 public class ApparatusParticleHandler {
@@ -55,7 +55,7 @@ public class ApparatusParticleHandler {
                             emitDirection(world, player.posX, player.posY + 1, player.posZ, forward.x, 0, forward.z);
                         }
                         if (gameSettings.keyBindLeft.isKeyDown()) {
-                            emitDirection(world, player.posX, player.posY + 1, -player.posZ, forward.z, 0, forward.x);
+                            emitDirection(world, player.posX, player.posY + 1, player.posZ, -forward.z, 0, forward.x);
                         }
                         if (gameSettings.keyBindRight.isKeyDown()) {
                             emitDirection(world, player.posX, player.posY + 1, player.posZ, forward.z, 0, -forward.x);

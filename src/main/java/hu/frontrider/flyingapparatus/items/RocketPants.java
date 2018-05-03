@@ -2,40 +2,29 @@ package hu.frontrider.flyingapparatus.items;
 
 import cofh.core.util.helpers.StringHelper;
 import cofh.thermalfoundation.init.TFFluids;
-import hu.frontrider.flyingapparatus.FlyingApparatus;
-import net.minecraft.block.BlockDispenser;
+import hu.frontrider.flyingapparatus.items.fluidItem.ArmorWithFluid;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class RocketPants extends ItemWithFluid {
+import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.*;
+
+public class RocketPants extends ArmorWithFluid {
 
     public RocketPants(int capacity, String registryName) {
-        super(TFFluids.fluidFuel, capacity);
-        this.maxStackSize = 1;
-        this.setMaxDamage(capacity);
-        this.setRegistryName(FlyingApparatus.MODID, registryName);
-        this.setUnlocalizedName(FlyingApparatus.MODID + "." + registryName);
+        super(TFFluids.fluidAerotheum, capacity,registryName,EntityEquipmentSlot.LEGS);
+
         this.setCreativeTab(CreativeTabs.TRANSPORTATION);
-        BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
     }
 
-    public boolean getIsRepairable(ItemStack p_getIsRepairable_1_, ItemStack p_getIsRepairable_2_) {
-        return false;
-    }
 
     @Override
     public void addInformation(ItemStack itemStack, @Nullable World world, List<String> infornamtion, ITooltipFlag flag) {
@@ -44,27 +33,6 @@ public class RocketPants extends ItemWithFluid {
         final int stored = getStored(itemStack);
         final int max = getMax(itemStack);
         infornamtion.add(StringHelper.getNoticeText(StringHelper.localize("info.flyingapparatus.apparatus_info.fuel") + " " + stored + "/" + max));
-    }
-
-    @SuppressWarnings({"unchecked", "NullableProblems"})
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        ItemStack heldItem = player.getHeldItem(hand);
-        EntityEquipmentSlot slotForItemStack = EntityLiving.getSlotForItemStack(heldItem);
-        ItemStack stack = player.getItemStackFromSlot(slotForItemStack);
-        if (stack.isEmpty()) {
-            player.setItemStackToSlot(slotForItemStack, heldItem.copy());
-            heldItem.setCount(0);
-            return new ActionResult(EnumActionResult.SUCCESS, heldItem);
-        } else {
-            return new ActionResult(EnumActionResult.FAIL, heldItem);
-        }
-    }
-
-    @Nullable
-    @Override
-    public EntityEquipmentSlot getEquipmentSlot(ItemStack p_getEquipmentSlot_1_) {
-        return EntityEquipmentSlot.LEGS;
     }
 
     public static void launchHandler(ItemStack stack, EntityPlayer player) {
@@ -77,4 +45,5 @@ public class RocketPants extends ItemWithFluid {
             player.motionZ = playerLookVec.z;
         }
     }
+
 }

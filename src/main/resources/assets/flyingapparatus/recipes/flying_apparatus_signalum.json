@@ -19,9 +19,9 @@
     },"P": {
       "item": "thermalfoundation:material",
       "data": 17
-    },"A": {
-      "item": "thermalfoundation:material",
-      "data": 357
+    },"A": {"A": {
+      "item": "flyingapparatus:thruster_component_signalum"
+    }
     }
   },
   "result": {

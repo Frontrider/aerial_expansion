@@ -4,33 +4,32 @@ item.flyingapparatus.apparatus_reinforced.name=Manned Maneuvering Unit (Reinforc
 item.flyingapparatus.apparatus_signalum.name=Manned Maneuvering Unit (Signalum)
 item.flyingapparatus.apparatus_resonant.name=Manned Maneuvering Unit (Resonant)
 
-item.flyingapparatus.apparatus_handheld.name=Handheld Controller
+item.flyingapparatus.material.equipment_frame.name=Equipment Frame
+item.flyingapparatus.material.thruster_component_basic.name=Basic Thruster Component
+item.flyingapparatus.material.thruster_component_hardened.name=Hardened Thruster Augment
+item.flyingapparatus.material.thruster_component_reinfroced.name=Reinforced Thruster Augment
+item.flyingapparatus.material.thruster_component_signalum.name=Signalum Thruster Augment
+item.flyingapparatus.material.thruster_component_resonant.name=Resonant Thruster Augment
+item.flyingapparatus.material.flux_tube.name=Flux Tube
 
 item.flyingapparatus.rocket_pants_basic.name=Rocket Pants (Basic)
 item.flyingapparatus.rocket_pants_hardened.name=Rocket Pants (Hardened)
 item.flyingapparatus.rocket_pants_reinforced.name=Rocket Pants (Reinforced)
 item.flyingapparatus.rocket_pants_signalum.name=Rocket Pants (Signalum)
 item.flyingapparatus.rocket_pants_resonant.name=Rocket Pants (Resonant)
-item.flyingapparatus.material.equipmentFrame.name=Equipment Frame
-item.flyingapparatus.material.thrusterComponentBasic.name=Basic Thruster Component
-item.flyingapparatus.material.fluxTube.name=Flux Tube
 
 block.flyingapparatus.solid_aerothenium.name=Stabilised Aerotheum
 
 key.flyingapparatus.category=Flying Apparatus
-key.flyingapparatus.enable_apparatus.desc=Enable device
-key.flyingapparatus.toggle_apparatus.desc=Toggle device function
+key.flyingapparatus.boost.desc=Activate boost
 
 info.flyingapparatus.apparatus_handheld.controls_levitators=Controls flying devices
 info.flyingapparatus.apparatus_handheld.holdit=Yes, you actually have to hold it.
 
-info.flyingapparatus.apparatus_handheld.keybind=Press (%s) to toggle levitator.
-info.flyingapparatus.apparatus_handheld.strafe_left=Hold (%s) to boost left.
-info.flyingapparatus.apparatus_handheld.strafe_right=Hold (%s) to boost right.
-info.flyingapparatus.apparatus_handheld.mode.0=Controls MMU
-info.flyingapparatus.apparatus_handheld.mode.1=Controls Boosters
-info.flyingapparatus.apparatus_handheld.mode.2=Controls Entire Eqipment
-info.flyingapparatus.apparatus_handheld.change_mode=Press (%s) to change mode
+info.flyingapparatus.apparatus_handheld.boost=Hold (%s) to boost.
+info.flyingapparatus.apparatus_handheld.mode.0=MMU off
+info.flyingapparatus.apparatus_handheld.mode.1=MMU on
+info.flyingapparatus.apparatus_handheld.change_mode=Press (%s) to change MMU mode
 
 info.flyingapparatus.apparatus_description.def=Enables flying capabilities
 info.flyingapparatus.apparatus_description.fuel=Uses Aerotheum as fuel
@@ -39,3 +38,10 @@ info.flyingapparatus.apparatus_info.fuel=Fuel:
 
 info.flyingapparatus.rocket_pants_description.def=Enables "flying" capabilities
 info.flyingapparatus.rocket_pants_description.fuel=Uses Refined Fuel
+
+info.flyingapparatus.material.thruster_component_basic.desc=Standard Aerotheum propulsion
+info.flyingapparatus.material.thruster_component_hardened.desc=Standard Aerotheum propulsion
+info.flyingapparatus.material.thruster_component_reinforced.desc=Standard Aerotheum propulsion
+info.flyingapparatus.material.thruster_component_signalum.desc=Standard Aerotheum propulsion
+info.flyingapparatus.material.thruster_component_resonant.desc=Standard Aerotheum propulsion
+

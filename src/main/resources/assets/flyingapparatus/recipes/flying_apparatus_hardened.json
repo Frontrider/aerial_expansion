@@ -20,8 +20,9 @@
       "item": "thermalfoundation:material",
       "data": 224
     },"A": {
-      "item": "thermalfoundation:material",
-      "data": 354
+      "A": {
+        "item": "flyingapparatus:thruster_component_hardened"
+      }
     }
   },
   "result": {

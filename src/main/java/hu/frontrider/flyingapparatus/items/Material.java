@@ -1,38 +1,32 @@
 package hu.frontrider.flyingapparatus.items;
 
-import cofh.core.item.ItemMulti;
-import cofh.core.util.core.IInitializer;
+import cofh.core.util.helpers.StringHelper;
 import hu.frontrider.flyingapparatus.FlyingApparatus;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraft.world.World;
 
-public class Material extends ItemMulti implements IInitializer {
-    public Material(){
-        super(FlyingApparatus.MODID);
-        setUnlocalizedName("material");
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Objects;
+
+public class Material extends Item {
+
+
+    public Material(String name){
+        setRegistryName(FlyingApparatus.MODID, name) ;
+        setUnlocalizedName(getMaterialUnlocalizedName(name));
         setCreativeTab(CreativeTabs.TRANSPORTATION);
     }
 
-    /* IInitializer */
-    @Override
-    public boolean preInit() {
-
-        ForgeRegistries.ITEMS.register(setRegistryName("materials"));
-        FRAME = addOreDictItem(0,"equipmentFrame");
-        THRUSTER = addOreDictItem(1,"thrusterComponentBasic");
-        FLUX_TUBE = addOreDictItem(2,"fluxTube");
-        return true;
+    private static String getMaterialUnlocalizedName(String name){
+        return FlyingApparatus.MODID + ".material."+name;
     }
-
     @Override
-    public boolean initialize() {
-        return true;
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        final String name = Objects.requireNonNull(stack.getItem().getRegistryName()).getResourcePath();
+        tooltip.add(StringHelper.getFlavorText(StringHelper.localize("info.flyingapparatus.material."+name+".desc")));
     }
-
-
-    /*REFERENCES*/
-    public static ItemStack FRAME;
-    public static ItemStack THRUSTER;
-    public static ItemStack FLUX_TUBE;
 }

@@ -7,12 +7,10 @@
   ],
   "key": {
     "C": {
-      "item": "thermalfoundation:material",
-      "data": 515
+      "item": "flyingapparatus:flux_tube"
     },
     "F": {
-      "item": "thermalfoundation:material",
-      "data": 640
+      "item": "flyingapparatus:equipment_frame"
     },
     "S": {
       "item": "thermalfoundation:material",
@@ -21,8 +19,7 @@
       "item": "thermalfoundation:material",
       "data": 320
     },"A": {
-      "item": "thermalfoundation:material",
-      "data": 1026
+      "item": "flyingapparatus:thruster_component_basic"
     }
   },
   "result": {
