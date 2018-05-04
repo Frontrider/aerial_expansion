@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.*;
 
 public class RocketPants extends ArmorWithFluid {
 

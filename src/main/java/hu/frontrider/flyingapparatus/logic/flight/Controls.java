@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
-import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.drainFuel;
+import static hu.frontrider.flyingapparatus.items.fluidItem.ItemWithFluid.drainFuel;
 
 @Mod.EventBusSubscriber
 public class Controls {
@@ -59,7 +59,7 @@ public class Controls {
             final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
             if (ClientProxy.BOOST.isKeyDown()) {
 
-                if (drainFuel(chest, 10, true)) {
+                if (drainFuel(chest, 100, true)) {
                     player.motionY = 0;
                 } else {
                     return;
@@ -73,11 +73,11 @@ public class Controls {
                 }
 
                 if (gameSettings.keyBindLeft.isKeyDown()) {
-                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, -forward.z, 0.0, forward.x);
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, forward.z, 0.0, -forward.x);
                 }
 
                 if (gameSettings.keyBindRight.isKeyDown()) {
-                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, forward.z, 0.0, -forward.x);
+                    FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, -forward.z, 0.0, forward.x);
                 }
                 if (gameSettings.keyBindJump.isKeyDown()) {
                     FlyingApparatusItem.handleBoost((FlyingApparatusItem) item, player, 0.0, 1, 0.0);

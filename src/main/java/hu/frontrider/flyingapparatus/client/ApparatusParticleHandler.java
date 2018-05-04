@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import static hu.frontrider.flyingapparatus.FlyingApparatus.random;
 import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
-import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.drainFuel;
+import static hu.frontrider.flyingapparatus.items.fluidItem.ItemWithFluid.drainFuel;
 
 @Mod.EventBusSubscriber
 public class ApparatusParticleHandler {

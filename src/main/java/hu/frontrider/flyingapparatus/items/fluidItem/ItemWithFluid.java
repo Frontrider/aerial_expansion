@@ -14,19 +14,17 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Map;
 
-import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.*;
-
-public abstract class ItemWithFluid extends Item implements IFluidContainerItem, IEnchantableItem {
+public class ItemWithFluid extends Item implements IFluidContainerItem, IEnchantableItem {
 
     String fluid;
     int capacity;
+
     public static String STORED = "stored";
 
     public ItemWithFluid( Fluid fluid, int capacity) {
         this.fluid = fluid.getName();
         this.capacity = capacity;
     }
-
 
     @Override
     public FluidStack getFluid(ItemStack container) {
@@ -90,5 +88,55 @@ public abstract class ItemWithFluid extends Item implements IFluidContainerItem,
     public boolean canEnchant(ItemStack stack, Enchantment enchantment) {
         return enchantment == CoreEnchantments.holding;
     }
+
+    public static boolean drainFuel(ItemStack itemStack, int amount) {
+        return drainFuel(itemStack, amount, true);
+    }
+
+    public static boolean drainFuel(ItemStack itemStack, int amount, boolean doDrain) {
+        if (itemStack.hasTagCompound()) {
+            final NBTTagCompound tagCompound = itemStack.getTagCompound();
+            if (tagCompound.hasKey(STORED)) {
+                final int capacity = tagCompound.getInteger(STORED);
+                if (capacity > amount) {
+                    if (doDrain) {
+                        tagCompound.setInteger(STORED, capacity - amount);
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    static void addAmount(ItemStack stack, int amount) {
+        if (!stack.hasTagCompound()) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        final NBTTagCompound nbt = stack.getTagCompound();
+        if (!nbt.hasKey(STORED)) {
+            nbt.setInteger(STORED, amount);
+        } else {
+            final int capacity = nbt.getInteger(STORED);
+            nbt.setInteger(STORED, capacity + amount);
+        }
+    }
+
+    public static int getStored(ItemStack stack) {
+
+        if (!stack.hasTagCompound()) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        return stack.getTagCompound().getInteger(STORED);
+    }
+
+    static int getEmptySpace(ItemStack stack) {
+        return getMax(stack) - getStored(stack);
+    }
+
+    public static int getMax(ItemStack stack) {
+        return ((ItemWithFluid) stack.getItem()).capacity;
+    }
+
 
 }

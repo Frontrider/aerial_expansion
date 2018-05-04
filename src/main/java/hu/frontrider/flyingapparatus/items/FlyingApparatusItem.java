@@ -17,8 +17,6 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.getMax;
-import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.getStored;
 
 public class FlyingApparatusItem extends ArmorWithFluid implements IEnchantableItem {
 

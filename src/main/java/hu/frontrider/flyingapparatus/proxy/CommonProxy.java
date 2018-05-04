@@ -2,6 +2,7 @@ package hu.frontrider.flyingapparatus.proxy;
 
 import hu.frontrider.flyingapparatus.network.ApparatusToggleHandler;
 import hu.frontrider.flyingapparatus.network.ApparatusToggleMessage;
+import hu.frontrider.flyingapparatus.registry.RecipeRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -11,5 +12,6 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent event){
         NETWORK.registerMessage(ApparatusToggleHandler.class, ApparatusToggleMessage.class, 0, Side.SERVER);
+        RecipeRegistry.init();
     }
 }

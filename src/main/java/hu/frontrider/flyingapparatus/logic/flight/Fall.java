@@ -9,7 +9,8 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static hu.frontrider.flyingapparatus.items.fluidItem.FluidItemHelper.drainFuel;
+import static hu.frontrider.flyingapparatus.items.fluidItem.ItemWithFluid.drainFuel;
+
 
 @Mod.EventBusSubscriber
 public class Fall {
