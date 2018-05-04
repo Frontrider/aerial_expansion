@@ -3,14 +3,15 @@ item.flyingapparatus.apparatus_hardened.name=Manned Maneuvering Unit (Hardened)
 item.flyingapparatus.apparatus_reinforced.name=Manned Maneuvering Unit (Reinforced)
 item.flyingapparatus.apparatus_signalum.name=Manned Maneuvering Unit (Signalum)
 item.flyingapparatus.apparatus_resonant.name=Manned Maneuvering Unit (Resonant)
+item.flyingapparatus.apparatus_handheld.name=Handheld Controller
 
 item.flyingapparatus.material.equipment_frame.name=Equipment Frame
 item.flyingapparatus.material.thruster_component_basic.name=Basic Thruster Component
 item.flyingapparatus.material.thruster_component_hardened.name=Hardened Thruster Augment
-item.flyingapparatus.material.thruster_component_reinfroced.name=Reinforced Thruster Augment
+item.flyingapparatus.material.thruster_component_reinforced.name=Reinforced Thruster Augment
 item.flyingapparatus.material.thruster_component_signalum.name=Signalum Thruster Augment
 item.flyingapparatus.material.thruster_component_resonant.name=Resonant Thruster Augment
-item.flyingapparatus.material.flux_tube.name=Flux Tube
+item.flyingapparatus.material.flux_tube.name=Evacuated Conductane Coil
 
 item.flyingapparatus.rocket_pants_basic.name=Rocket Pants (Basic)
 item.flyingapparatus.rocket_pants_hardened.name=Rocket Pants (Hardened)
@@ -40,8 +41,12 @@ info.flyingapparatus.rocket_pants_description.def=Enables "flying" capabilities
 info.flyingapparatus.rocket_pants_description.fuel=Uses Refined Fuel
 
 info.flyingapparatus.material.thruster_component_basic.desc=Standard Aerotheum propulsion
-info.flyingapparatus.material.thruster_component_hardened.desc=Standard Aerotheum propulsion
-info.flyingapparatus.material.thruster_component_reinforced.desc=Standard Aerotheum propulsion
-info.flyingapparatus.material.thruster_component_signalum.desc=Standard Aerotheum propulsion
-info.flyingapparatus.material.thruster_component_resonant.desc=Standard Aerotheum propulsion
+info.flyingapparatus.material.thruster_component_hardened.desc=Reinfroced emission chamber
+info.flyingapparatus.material.thruster_component_reinforced.desc=Additional flux field stabilizers
+info.flyingapparatus.material.thruster_component_signalum.desc=Improved Emission Control System
+info.flyingapparatus.material.thruster_component_resonant.desc=Enhanced flight control mechanism
+info.flyingapparatus.material.equipment_frame.desc=Basic framing for more advanced equipment
+info.flyingapparatus.material.flux_tube.desc=Coil in a glass container
+
+
 
