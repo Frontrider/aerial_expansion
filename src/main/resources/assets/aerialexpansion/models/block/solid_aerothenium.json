@@ -1,7 +1,7 @@
 {   "parent": "block/block",
   "textures": {
-    "particle": "flyingapparatus:blocks/solid_aerotheum_block",
-    "texture": "flyingapparatus:blocks/solid_aerotheum_block"
+    "particle": "aerialexpansion:blocks/solid_aerotheum_block",
+    "texture": "aerialexpansion:blocks/solid_aerotheum_block"
   },
   "elements": [
     {   "from": [ 2, 2, 2 ],

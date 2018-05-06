@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "flyingapparatus:items/material/flux_tube"
+    "layer0": "aerialexpansion:items/material/flux_tube"
   }
 }

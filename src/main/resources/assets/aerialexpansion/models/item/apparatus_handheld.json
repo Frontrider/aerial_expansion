@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "flyingapparatus:items/apparatus_handheld"
+    "layer0": "aerialexpansion:items/apparatus_handheld"
   }
 }
