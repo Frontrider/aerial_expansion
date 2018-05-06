@@ -1,7 +1,7 @@
-package hu.frontrider.flyingapparatus.items;
+package hu.frontrider.aerialexpansion.items;
 
 import cofh.core.util.helpers.StringHelper;
-import hu.frontrider.flyingapparatus.FlyingApparatus;
+import hu.frontrider.aerialexpansion.AerialExpansion;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -16,17 +16,17 @@ public class Material extends Item {
 
 
     public Material(String name){
-        setRegistryName(FlyingApparatus.MODID, name) ;
+        setRegistryName(AerialExpansion.MODID, name) ;
         setUnlocalizedName(getMaterialUnlocalizedName(name));
         setCreativeTab(CreativeTabs.TRANSPORTATION);
     }
 
     private static String getMaterialUnlocalizedName(String name){
-        return FlyingApparatus.MODID + ".material."+name;
+        return AerialExpansion.MODID + ".material."+name;
     }
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         final String name = Objects.requireNonNull(stack.getItem().getRegistryName()).getResourcePath();
-        tooltip.add(StringHelper.getFlavorText(StringHelper.localize("info.flyingapparatus.material."+name+".desc")));
+        tooltip.add(StringHelper.getFlavorText(StringHelper.localize("info.aerialexpansion.material."+name+".desc")));
     }
 }

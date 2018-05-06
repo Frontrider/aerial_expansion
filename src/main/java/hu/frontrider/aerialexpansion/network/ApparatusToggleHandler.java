@@ -1,7 +1,7 @@
-package hu.frontrider.flyingapparatus.network;
+package hu.frontrider.aerialexpansion.network;
 
-import hu.frontrider.flyingapparatus.items.FlyingApparatusItem;
-import hu.frontrider.flyingapparatus.registry.ItemRegistry;
+import hu.frontrider.aerialexpansion.items.FlyingApparatusItem;
+import hu.frontrider.aerialexpansion.registry.ItemRegistry;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
+import static hu.frontrider.aerialexpansion.items.FlyingApparatusItem.ACTIVE_NAME;
 
 public class ApparatusToggleHandler implements IMessageHandler<ApparatusToggleMessage, IMessage> {
 

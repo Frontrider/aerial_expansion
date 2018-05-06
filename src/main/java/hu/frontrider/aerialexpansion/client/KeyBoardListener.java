@@ -1,4 +1,4 @@
-package hu.frontrider.flyingapparatus.client;
+package hu.frontrider.aerialexpansion.client;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;

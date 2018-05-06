@@ -1,4 +1,4 @@
-package hu.frontrider.flyingapparatus.items.fluidItem;
+package hu.frontrider.aerialexpansion.items.fluidItem;
 
 import cofh.api.fluid.IFluidContainerItem;
 import cofh.core.init.CoreEnchantments;

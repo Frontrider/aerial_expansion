@@ -1,10 +1,10 @@
-package hu.frontrider.flyingapparatus.items;
+package hu.frontrider.aerialexpansion.items;
 
 import cofh.api.item.IMultiModeItem;
 import cofh.core.util.helpers.StringHelper;
-import hu.frontrider.flyingapparatus.FlyingApparatus;
-import hu.frontrider.flyingapparatus.network.ApparatusToggleMessage;
-import hu.frontrider.flyingapparatus.proxy.ClientProxy;
+import hu.frontrider.aerialexpansion.AerialExpansion;
+import hu.frontrider.aerialexpansion.network.ApparatusToggleMessage;
+import hu.frontrider.aerialexpansion.proxy.ClientProxy;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,13 +21,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static hu.frontrider.flyingapparatus.FlyingApparatus.NETWORK;
+import static hu.frontrider.aerialexpansion.AerialExpansion.NETWORK;
 
 public class ApparatusHandHeld extends Item implements IMultiModeItem {
 
     public ApparatusHandHeld() {
-        setRegistryName(FlyingApparatus.MODID, "apparatus_handheld");
-        this.setUnlocalizedName(FlyingApparatus.MODID + "." + "apparatus_handheld");
+        setRegistryName(AerialExpansion.MODID, "apparatus_handheld");
+        this.setUnlocalizedName(AerialExpansion.MODID + "." + "apparatus_handheld");
         this.setCreativeTab(CreativeTabs.TRANSPORTATION);
         this.maxStackSize = 1;
     }
@@ -51,16 +51,16 @@ public class ApparatusHandHeld extends Item implements IMultiModeItem {
 
         list.add(
                 StringHelper.getInfoText(
-                        StringHelper.localize("info.flyingapparatus.apparatus_handheld.controls_levitators")));
+                        StringHelper.localize("info.aerialexpansion.apparatus_handheld.controls_levitators")));
 
         if (StringHelper.isShiftKeyDown()) {
             list.add(
                     StringHelper.getInfoText(
-                            StringHelper.localizeFormat("info.flyingapparatus.apparatus_handheld.boost",
+                            StringHelper.localizeFormat("info.aerialexpansion.apparatus_handheld.boost",
                                     StringHelper.getKeyName(ClientProxy.BOOST.getKeyCode()))));
             list.add(
                     StringHelper.getFlavorText(
-                            StringHelper.localize("info.flyingapparatus.apparatus_handheld.holdit")));
+                            StringHelper.localize("info.aerialexpansion.apparatus_handheld.holdit")));
         } else {
             list.add(StringHelper.shiftForDetails());
         }

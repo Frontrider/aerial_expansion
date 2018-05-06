@@ -1,9 +1,9 @@
-package hu.frontrider.flyingapparatus.registry;
+package hu.frontrider.aerialexpansion.registry;
 
-import hu.frontrider.flyingapparatus.FlyingApparatus;
+import hu.frontrider.aerialexpansion.AerialExpansion;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = FlyingApparatus.MODID)
+@Config(modid = AerialExpansion.MODID)
 public class Configuration {
 
     @Config.Comment({

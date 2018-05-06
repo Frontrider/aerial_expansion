@@ -1,4 +1,4 @@
-package hu.frontrider.flyingapparatus.registry;
+package hu.frontrider.aerialexpansion.registry;
 
 import cofh.core.util.helpers.RecipeHelper;
 import cofh.thermalfoundation.init.TFItems;

@@ -1,6 +1,6 @@
-package hu.frontrider.flyingapparatus.items.fluidItem;
+package hu.frontrider.aerialexpansion.items.fluidItem;
 
-import hu.frontrider.flyingapparatus.FlyingApparatus;
+import hu.frontrider.aerialexpansion.AerialExpansion;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -24,13 +24,13 @@ public class ArmorWithFluid extends ItemWithFluid {
     public ArmorWithFluid(Fluid fluid, int capacity, String name, EntityEquipmentSlot slot) {
         super(fluid, capacity);
         this.slot = slot;
-        final String PATH_ARMOR = FlyingApparatus.MODID + ":textures/armor/";
+        final String PATH_ARMOR = AerialExpansion.MODID + ":textures/armor/";
         this.texture = PATH_ARMOR + name + ".png";
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
 
         this.maxStackSize = 1;
-        this.setRegistryName(FlyingApparatus.MODID, name);
-        this.setUnlocalizedName(FlyingApparatus.MODID + "." + name);
+        this.setRegistryName(AerialExpansion.MODID, name);
+        this.setUnlocalizedName(AerialExpansion.MODID + "." + name);
     }
 
     @Override

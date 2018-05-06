@@ -1,6 +1,6 @@
-package hu.frontrider.flyingapparatus.registry;
+package hu.frontrider.aerialexpansion.registry;
 
-import hu.frontrider.flyingapparatus.blocks.SoildAerothenium;
+import hu.frontrider.aerialexpansion.blocks.SoildAerothenium;
 import net.minecraft.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

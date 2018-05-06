@@ -1,8 +1,8 @@
-package hu.frontrider.flyingapparatus.logic.flight;
+package hu.frontrider.aerialexpansion.logic.flight;
 
-import hu.frontrider.flyingapparatus.items.ApparatusHandHeld;
-import hu.frontrider.flyingapparatus.items.FlyingApparatusItem;
-import hu.frontrider.flyingapparatus.proxy.ClientProxy;
+import hu.frontrider.aerialexpansion.items.ApparatusHandHeld;
+import hu.frontrider.aerialexpansion.items.FlyingApparatusItem;
+import hu.frontrider.aerialexpansion.proxy.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,8 +18,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
-import static hu.frontrider.flyingapparatus.items.fluidItem.ItemWithFluid.drainFuel;
+import static hu.frontrider.aerialexpansion.items.FlyingApparatusItem.ACTIVE_NAME;
+import static hu.frontrider.aerialexpansion.items.fluidItem.ItemWithFluid.drainFuel;
 
 @Mod.EventBusSubscriber
 public class Controls {

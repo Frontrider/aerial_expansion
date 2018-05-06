@@ -1,8 +1,8 @@
-package hu.frontrider.flyingapparatus.items;
+package hu.frontrider.aerialexpansion.items;
 
 import cofh.core.util.helpers.StringHelper;
 import cofh.thermalfoundation.init.TFFluids;
-import hu.frontrider.flyingapparatus.items.fluidItem.ArmorWithFluid;
+import hu.frontrider.aerialexpansion.items.fluidItem.ArmorWithFluid;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,11 +27,11 @@ public class RocketPants extends ArmorWithFluid {
 
     @Override
     public void addInformation(ItemStack itemStack, @Nullable World world, List<String> infornamtion, ITooltipFlag flag) {
-        infornamtion.add(StringHelper.getInfoText("info.flyingapparatus.rocket_pants_description.def"));
-        infornamtion.add(StringHelper.getInfoText("info.flyingapparatus.rocket_pants_description.fuel"));
+        infornamtion.add(StringHelper.getInfoText("info.aerialexpansion.rocket_pants_description.def"));
+        infornamtion.add(StringHelper.getInfoText("info.aerialexpansion.rocket_pants_description.fuel"));
         final int stored = getStored(itemStack);
         final int max = getMax(itemStack);
-        infornamtion.add(StringHelper.getNoticeText(StringHelper.localize("info.flyingapparatus.apparatus_info.fuel") + " " + stored + "/" + max));
+        infornamtion.add(StringHelper.getNoticeText(StringHelper.localize("info.aerialexpansion.apparatus_info.fuel") + " " + stored + "/" + max));
     }
 
     public static void launchHandler(ItemStack stack, EntityPlayer player) {

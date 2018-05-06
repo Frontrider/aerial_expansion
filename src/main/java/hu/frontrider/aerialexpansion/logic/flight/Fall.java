@@ -1,6 +1,6 @@
-package hu.frontrider.flyingapparatus.logic.flight;
+package hu.frontrider.aerialexpansion.logic.flight;
 
-import hu.frontrider.flyingapparatus.items.FlyingApparatusItem;
+import hu.frontrider.aerialexpansion.items.FlyingApparatusItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -9,7 +9,7 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import static hu.frontrider.flyingapparatus.items.fluidItem.ItemWithFluid.drainFuel;
+import static hu.frontrider.aerialexpansion.items.fluidItem.ItemWithFluid.drainFuel;
 
 
 @Mod.EventBusSubscriber

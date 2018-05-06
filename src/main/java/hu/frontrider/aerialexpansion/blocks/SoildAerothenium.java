@@ -1,9 +1,9 @@
-package hu.frontrider.flyingapparatus.blocks;
+package hu.frontrider.aerialexpansion.blocks;
 
 import cofh.thermalfoundation.init.TFFluids;
-import hu.frontrider.flyingapparatus.FlyingApparatus;
-import hu.frontrider.flyingapparatus.items.FlyingApparatusItem;
-import hu.frontrider.flyingapparatus.registry.BlockRegistry;
+import hu.frontrider.aerialexpansion.AerialExpansion;
+import hu.frontrider.aerialexpansion.items.FlyingApparatusItem;
+import hu.frontrider.aerialexpansion.registry.BlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
+import static hu.frontrider.aerialexpansion.items.FlyingApparatusItem.ACTIVE_NAME;
 
 public class SoildAerothenium extends Block {
 
@@ -30,8 +30,8 @@ public class SoildAerothenium extends Block {
 
     public SoildAerothenium() {
         super(Material.GLASS, MapColor.CLAY);
-        setRegistryName(FlyingApparatus.MODID, "solid_aerothenium");
-        setUnlocalizedName(FlyingApparatus.MODID + ".solid_aerothenium");
+        setRegistryName(AerialExpansion.MODID, "solid_aerothenium");
+        setUnlocalizedName(AerialExpansion.MODID + ".solid_aerothenium");
         setBlockUnbreakable();
         setTickRandomly(true);
         fullBlock = false;

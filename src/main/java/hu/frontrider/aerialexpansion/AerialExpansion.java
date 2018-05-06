@@ -1,8 +1,8 @@
-package hu.frontrider.flyingapparatus;
+package hu.frontrider.aerialexpansion;
 
 import cofh.CoFHCore;
 import cofh.thermalfoundation.ThermalFoundation;
-import hu.frontrider.flyingapparatus.proxy.CommonProxy;
+import hu.frontrider.aerialexpansion.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -13,11 +13,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
-@Mod(modid = FlyingApparatus.MODID, name = FlyingApparatus.NAME, version = FlyingApparatus.VERSION,dependencies = FlyingApparatus.DEPENDENCIES)
-public class FlyingApparatus {
+@Mod(modid = AerialExpansion.MODID, name = AerialExpansion.NAME, version = AerialExpansion.VERSION,dependencies = AerialExpansion.DEPENDENCIES)
+public class AerialExpansion {
 
-    public static final String MODID = "flyingapparatus";
-    public static final String NAME = "Flying Apparatus";
+    public static final String MODID = "aerialexpansion";
+    public static final String NAME = "Aerial Expansion";
     public static final String VERSION = "1.0-SNAPSHOT";
     public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
     public static final String DEPENDENCIES = CoFHCore.VERSION_GROUP + ThermalFoundation.VERSION_GROUP;
@@ -30,7 +30,7 @@ public class FlyingApparatus {
         logger = event.getModLog();
     }
 
-    @SidedProxy(clientSide = "hu.frontrider.flyingapparatus.proxy.ClientProxy", serverSide = "hu.frontrider.flyingapparatus.proxy.ServerProxy")
+    @SidedProxy(clientSide = "hu.frontrider.aerialexpansion.proxy.ClientProxy", serverSide = "hu.frontrider.aerialexpansion.proxy.ServerProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

@@ -1,9 +1,9 @@
-package hu.frontrider.flyingapparatus.registry;
+package hu.frontrider.aerialexpansion.registry;
 
-import hu.frontrider.flyingapparatus.items.ApparatusHandHeld;
-import hu.frontrider.flyingapparatus.items.FlyingApparatusItem;
-import hu.frontrider.flyingapparatus.items.Material;
-import hu.frontrider.flyingapparatus.items.RocketPants;
+import hu.frontrider.aerialexpansion.items.ApparatusHandHeld;
+import hu.frontrider.aerialexpansion.items.FlyingApparatusItem;
+import hu.frontrider.aerialexpansion.items.Material;
+import hu.frontrider.aerialexpansion.items.RocketPants;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;

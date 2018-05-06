@@ -1,4 +1,4 @@
-package hu.frontrider.flyingapparatus.client;
+package hu.frontrider.aerialexpansion.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
@@ -15,9 +15,9 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static hu.frontrider.flyingapparatus.FlyingApparatus.random;
-import static hu.frontrider.flyingapparatus.items.FlyingApparatusItem.ACTIVE_NAME;
-import static hu.frontrider.flyingapparatus.items.fluidItem.ItemWithFluid.drainFuel;
+import static hu.frontrider.aerialexpansion.AerialExpansion.random;
+import static hu.frontrider.aerialexpansion.items.FlyingApparatusItem.ACTIVE_NAME;
+import static hu.frontrider.aerialexpansion.items.fluidItem.ItemWithFluid.drainFuel;
 
 @Mod.EventBusSubscriber
 public class ApparatusParticleHandler {

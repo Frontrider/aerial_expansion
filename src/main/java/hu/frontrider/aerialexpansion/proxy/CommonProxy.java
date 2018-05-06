@@ -1,12 +1,12 @@
-package hu.frontrider.flyingapparatus.proxy;
+package hu.frontrider.aerialexpansion.proxy;
 
-import hu.frontrider.flyingapparatus.network.ApparatusToggleHandler;
-import hu.frontrider.flyingapparatus.network.ApparatusToggleMessage;
-import hu.frontrider.flyingapparatus.registry.RecipeRegistry;
+import hu.frontrider.aerialexpansion.network.ApparatusToggleHandler;
+import hu.frontrider.aerialexpansion.network.ApparatusToggleMessage;
+import hu.frontrider.aerialexpansion.registry.RecipeRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-import static hu.frontrider.flyingapparatus.FlyingApparatus.NETWORK;
+import static hu.frontrider.aerialexpansion.AerialExpansion.NETWORK;
 
 public class CommonProxy {
 
