@@ -1,52 +1,52 @@
-item.flyingapparatus.apparatus_basic.name=Manned Maneuvering Unit (Basic)
-item.flyingapparatus.apparatus_hardened.name=Manned Maneuvering Unit (Hardened)
-item.flyingapparatus.apparatus_reinforced.name=Manned Maneuvering Unit (Reinforced)
-item.flyingapparatus.apparatus_signalum.name=Manned Maneuvering Unit (Signalum)
-item.flyingapparatus.apparatus_resonant.name=Manned Maneuvering Unit (Resonant)
-item.flyingapparatus.apparatus_handheld.name=Handheld Controller
+item.aerialexpansion.apparatus_basic.name=Manned Maneuvering Unit (Basic)
+item.aerialexpansion.apparatus_hardened.name=Manned Maneuvering Unit (Hardened)
+item.aerialexpansion.apparatus_reinforced.name=Manned Maneuvering Unit (Reinforced)
+item.aerialexpansion.apparatus_signalum.name=Manned Maneuvering Unit (Signalum)
+item.aerialexpansion.apparatus_resonant.name=Manned Maneuvering Unit (Resonant)
+item.aerialexpansion.apparatus_handheld.name=Handheld Controller
 
-item.flyingapparatus.material.equipment_frame.name=Equipment Frame
-item.flyingapparatus.material.thruster_component_basic.name=Basic Thruster Component
-item.flyingapparatus.material.thruster_component_hardened.name=Hardened Thruster Augment
-item.flyingapparatus.material.thruster_component_reinforced.name=Reinforced Thruster Augment
-item.flyingapparatus.material.thruster_component_signalum.name=Signalum Thruster Augment
-item.flyingapparatus.material.thruster_component_resonant.name=Resonant Thruster Augment
-item.flyingapparatus.material.flux_tube.name=Evacuated Conductane Coil
+item.aerialexpansion.material.equipment_frame.name=Equipment Frame
+item.aerialexpansion.material.thruster_component_basic.name=Basic Thruster Component
+item.aerialexpansion.material.thruster_component_hardened.name=Hardened Thruster Augment
+item.aerialexpansion.material.thruster_component_reinforced.name=Reinforced Thruster Augment
+item.aerialexpansion.material.thruster_component_signalum.name=Signalum Thruster Augment
+item.aerialexpansion.material.thruster_component_resonant.name=Resonant Thruster Augment
+item.aerialexpansion.material.flux_tube.name=Evacuated Conductane Coil
 
-item.flyingapparatus.rocket_pants_basic.name=Rocket Pants (Basic)
-item.flyingapparatus.rocket_pants_hardened.name=Rocket Pants (Hardened)
-item.flyingapparatus.rocket_pants_reinforced.name=Rocket Pants (Reinforced)
-item.flyingapparatus.rocket_pants_signalum.name=Rocket Pants (Signalum)
-item.flyingapparatus.rocket_pants_resonant.name=Rocket Pants (Resonant)
+item.aerialexpansion.rocket_pants_basic.name=Rocket Pants (Basic)
+item.aerialexpansion.rocket_pants_hardened.name=Rocket Pants (Hardened)
+item.aerialexpansion.rocket_pants_reinforced.name=Rocket Pants (Reinforced)
+item.aerialexpansion.rocket_pants_signalum.name=Rocket Pants (Signalum)
+item.aerialexpansion.rocket_pants_resonant.name=Rocket Pants (Resonant)
 
-block.flyingapparatus.solid_aerothenium.name=Stabilised Aerotheum
+block.aerialexpansion.solid_aerothenium.name=Stabilised Aerotheum
 
-key.flyingapparatus.category=Flying Apparatus
-key.flyingapparatus.boost.desc=Activate boost
+key.aerialexpansion.category=Flying Apparatus
+key.aerialexpansion.boost.desc=Activate boost
 
-info.flyingapparatus.apparatus_handheld.controls_levitators=Controls flying devices
-info.flyingapparatus.apparatus_handheld.holdit=Yes, you actually have to hold it.
+info.aerialexpansion.apparatus_handheld.controls_levitators=Controls flying devices
+info.aerialexpansion.apparatus_handheld.holdit=Yes, you actually have to hold it.
 
-info.flyingapparatus.apparatus_handheld.boost=Hold (%s) to boost.
-info.flyingapparatus.apparatus_handheld.mode.0=MMU off
-info.flyingapparatus.apparatus_handheld.mode.1=MMU on
-info.flyingapparatus.apparatus_handheld.change_mode=Press (%s) to change MMU mode
+info.aerialexpansion.apparatus_handheld.boost=Hold (%s) to boost.
+info.aerialexpansion.apparatus_handheld.mode.0=MMU off
+info.aerialexpansion.apparatus_handheld.mode.1=MMU on
+info.aerialexpansion.apparatus_handheld.change_mode=Press (%s) to change MMU mode
 
-info.flyingapparatus.apparatus_description.def=Enables flying capabilities
-info.flyingapparatus.apparatus_description.fuel=Uses Aerotheum as fuel
-info.flyingapparatus.apparatus_description.fall_damage=Negates fall damage (%s)
-info.flyingapparatus.apparatus_info.fuel=Fuel:
+info.aerialexpansion.apparatus_description.def=Enables flying capabilities
+info.aerialexpansion.apparatus_description.fuel=Uses Aerotheum as fuel
+info.aerialexpansion.apparatus_description.fall_damage=Negates fall damage (%s)
+info.aerialexpansion.apparatus_info.fuel=Fuel:
 
-info.flyingapparatus.rocket_pants_description.def=Enables "flying" capabilities
-info.flyingapparatus.rocket_pants_description.fuel=Uses Refined Fuel
+info.aerialexpansion.rocket_pants_description.def=Enables "flying" capabilities
+info.aerialexpansion.rocket_pants_description.fuel=Uses Refined Fuel
 
-info.flyingapparatus.material.thruster_component_basic.desc=Standard Aerotheum propulsion
-info.flyingapparatus.material.thruster_component_hardened.desc=Reinfroced emission chamber
-info.flyingapparatus.material.thruster_component_reinforced.desc=Additional flux field stabilizers
-info.flyingapparatus.material.thruster_component_signalum.desc=Improved Emission Control System
-info.flyingapparatus.material.thruster_component_resonant.desc=Enhanced flight control mechanism
-info.flyingapparatus.material.equipment_frame.desc=Basic framing for more advanced equipment
-info.flyingapparatus.material.flux_tube.desc=Coil in a glass container
+info.aerialexpansion.material.thruster_component_basic.desc=Standard Aerotheum propulsion
+info.aerialexpansion.material.thruster_component_hardened.desc=Reinfroced emission chamber
+info.aerialexpansion.material.thruster_component_reinforced.desc=Additional flux field stabilizers
+info.aerialexpansion.material.thruster_component_signalum.desc=Improved Emission Control System
+info.aerialexpansion.material.thruster_component_resonant.desc=Enhanced flight control mechanism
+info.aerialexpansion.material.equipment_frame.desc=Basic framing for more advanced equipment
+info.aerialexpansion.material.flux_tube.desc=Coil in a glass container
 
 
 
