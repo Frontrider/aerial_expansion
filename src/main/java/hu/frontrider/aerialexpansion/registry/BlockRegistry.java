@@ -13,8 +13,8 @@ public class BlockRegistry {
 
     @SubscribeEvent
     public static void init(RegistryEvent.Register<Block> event){
-        event.getRegistry().registerAll(solidAerothenium);
+        event.getRegistry().registerAll(
+        //        solidAerothenium
+        );
     }
-
-
 }

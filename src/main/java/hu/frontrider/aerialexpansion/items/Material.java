@@ -27,6 +27,6 @@ public class Material extends Item {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         final String name = Objects.requireNonNull(stack.getItem().getRegistryName()).getResourcePath();
-        tooltip.add(StringHelper.getFlavorText(StringHelper.localize("info.aerialexpansion.material."+name+".desc")));
+        tooltip.add(StringHelper.getInfoText(StringHelper.localize("info.aerialexpansion.material."+name+".desc")));
     }
 }
