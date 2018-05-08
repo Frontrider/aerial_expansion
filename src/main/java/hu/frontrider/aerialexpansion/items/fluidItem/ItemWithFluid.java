@@ -3,6 +3,7 @@ package hu.frontrider.aerialexpansion.items.fluidItem;
 import cofh.api.fluid.IFluidContainerItem;
 import cofh.core.init.CoreEnchantments;
 import cofh.core.item.IEnchantableItem;
+import hu.frontrider.aerialexpansion.AerialExpansion;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.Item;
@@ -21,9 +22,13 @@ public class ItemWithFluid extends Item implements IFluidContainerItem, IEnchant
 
     public static String STORED = "stored";
 
-    public ItemWithFluid( Fluid fluid, int capacity) {
+    public ItemWithFluid( Fluid fluid, int capacity,String name) {
         this.fluid = fluid.getName();
         this.capacity = capacity;
+
+        this.maxStackSize = 1;
+        this.setRegistryName(AerialExpansion.MODID, name);
+        this.setUnlocalizedName(AerialExpansion.MODID + "." + name);
     }
 
     @Override

@@ -14,7 +14,6 @@ import java.util.Objects;
 
 public class Material extends Item {
 
-
     public Material(String name){
         setRegistryName(AerialExpansion.MODID, name) ;
         setUnlocalizedName(getMaterialUnlocalizedName(name));
