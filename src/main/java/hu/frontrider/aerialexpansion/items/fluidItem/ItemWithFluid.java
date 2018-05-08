@@ -17,13 +17,16 @@ import java.util.Map;
 
 public class ItemWithFluid extends Item implements IFluidContainerItem, IEnchantableItem {
 
-    String fluid;
-    int capacity;
+    protected String fluid;
+    protected int capacity;
 
     public static String STORED = "stored";
 
     public ItemWithFluid( Fluid fluid, int capacity,String name) {
-        this.fluid = fluid.getName();
+        this(fluid.getName(),capacity,name);
+    }
+    public ItemWithFluid(String fluid, int capacity,String name) {
+        this.fluid = fluid;
         this.capacity = capacity;
 
         this.maxStackSize = 1;
@@ -61,7 +64,7 @@ public class ItemWithFluid extends Item implements IFluidContainerItem, IEnchant
 
     @Override
     public int fill(ItemStack container, FluidStack resource, boolean doFill) {
-        if (resource.getFluid() == FluidRegistry.getFluid(fluid) && resource.amount > 0) {
+        if (resource.getFluid().getName().equals(fluid) && resource.amount > 0) {
             final int space = getEmptySpace(container);
             final int remaining = resource.amount - space;
             if (remaining >= 0) {
@@ -131,6 +134,7 @@ public class ItemWithFluid extends Item implements IFluidContainerItem, IEnchant
 
         if (!stack.hasTagCompound()) {
             stack.setTagCompound(new NBTTagCompound());
+            return 0;
         }
         return stack.getTagCompound().getInteger(STORED);
     }

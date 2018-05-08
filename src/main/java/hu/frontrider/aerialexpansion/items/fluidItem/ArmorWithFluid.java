@@ -21,13 +21,22 @@ public class ArmorWithFluid extends ItemWithFluid {
     private final EntityEquipmentSlot slot;
     private String texture;
 
-    public ArmorWithFluid(Fluid fluid, int capacity, String name, EntityEquipmentSlot slot) {
+    public ArmorWithFluid(String fluid, int capacity, String name, EntityEquipmentSlot slot){
         super(fluid, capacity,name);
         this.slot = slot;
+        init(name);
+    }
+    public ArmorWithFluid(Fluid fluid, int capacity, String name, EntityEquipmentSlot slot) {
+        super(fluid, capacity,name);
+        init(name);
+        this.slot = slot;
+    }
+    public void init(String name)
+    {
+
         final String PATH_ARMOR = AerialExpansion.MODID + ":textures/armor/";
         this.texture = PATH_ARMOR + name + ".png";
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
-
     }
 
     @Override

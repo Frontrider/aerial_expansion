@@ -35,7 +35,8 @@ public class ItemRegistry {
     public static void init(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
                 mmu_basic, mmu_hardened, mmu_reinforced, mmu_signalum, mmu_resonant,
-               // normal_rocket_pants,
+               //filling isn't working, and I have no idea why. Revisiting it when it does.
+               //normal_rocket_pants,
                 handheld,
                 flux_tube, armor_frame,
                 thruster_basic,thruster_hardened,thruster_reinforced,thruster_resonant,thruster_signalum);

@@ -1,7 +1,6 @@
 package hu.frontrider.aerialexpansion.items;
 
 import cofh.core.util.helpers.StringHelper;
-import cofh.thermalfoundation.init.TFFluids;
 import hu.frontrider.aerialexpansion.items.fluidItem.ArmorWithFluid;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,8 +18,8 @@ import java.util.List;
 public class RocketPants extends ArmorWithFluid {
 
     public RocketPants(int capacity, String registryName) {
-        super(TFFluids.fluidAerotheum, capacity,registryName,EntityEquipmentSlot.LEGS);
-
+        super("steam", capacity,registryName,EntityEquipmentSlot.LEGS);
+        fluid = "steam";
         this.setCreativeTab(CreativeTabs.TRANSPORTATION);
     }
 
