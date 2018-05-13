@@ -1,7 +1,6 @@
 package hu.frontrider.aerialexpansion.network;
 
 import hu.frontrider.aerialexpansion.items.FlyingApparatusItem;
-import hu.frontrider.aerialexpansion.registry.ItemRegistry;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -18,10 +17,9 @@ public class ApparatusToggleHandler implements IMessageHandler<ApparatusToggleMe
     public IMessage onMessage(ApparatusToggleMessage apparatusFunctionMessage, MessageContext messageContext) {
 
         final EntityPlayerMP player = messageContext.getServerHandler().player;
-        ItemStack chestSlot = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+        ItemStack chestSlot = player.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
 
-        if (chestSlot.getItem() instanceof FlyingApparatusItem)
-            if (player.getHeldItemOffhand().getItem() == ItemRegistry.handheld || player.getHeldItemMainhand().getItem() == ItemRegistry.handheld) {
+        if (chestSlot.getItem() instanceof FlyingApparatusItem){
                 NBTTagCompound nbt = chestSlot.getTagCompound();
                 if (nbt == null) {
                     nbt = new NBTTagCompound();

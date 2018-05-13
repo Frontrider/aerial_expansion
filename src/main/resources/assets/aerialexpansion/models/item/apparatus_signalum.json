@@ -1,6 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "aerialexpansion:items/apparatus_basic"
+    "layer0": "aerialexpansion:items/flightpants/body",
+    "layer1": "aerialexpansion:items/flightpants/tier"
   }
 }

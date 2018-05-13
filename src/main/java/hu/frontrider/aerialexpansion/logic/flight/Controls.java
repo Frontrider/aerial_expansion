@@ -1,8 +1,6 @@
 package hu.frontrider.aerialexpansion.logic.flight;
 
-import hu.frontrider.aerialexpansion.items.ApparatusHandHeld;
 import hu.frontrider.aerialexpansion.items.FlyingApparatusItem;
-import hu.frontrider.aerialexpansion.proxy.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +8,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -18,8 +15,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static hu.frontrider.aerialexpansion.items.ArmorWithFluid.drainFuel;
 import static hu.frontrider.aerialexpansion.items.FlyingApparatusItem.ACTIVE_NAME;
-import static hu.frontrider.aerialexpansion.items.fluidItem.ItemWithFluid.drainFuel;
 
 @Mod.EventBusSubscriber
 public class Controls {
@@ -29,35 +26,31 @@ public class Controls {
     @SubscribeEvent
     public static void control(TickEvent.PlayerTickEvent event) {
         final EntityPlayer player = event.player;
-        if (!player.hasItemInSlot(EntityEquipmentSlot.CHEST)
-                && (!player.hasItemInSlot(EntityEquipmentSlot.MAINHAND)
-                && !player.hasItemInSlot(EntityEquipmentSlot.OFFHAND)))
-            return;
 
-        final ItemStack chest = player.getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+        final ItemStack chest = player.getItemStackFromSlot(EntityEquipmentSlot.LEGS);
         final Item item = chest.getItem();
-
-        final ItemStack handItem = player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ApparatusHandHeld ? player.getHeldItem(EnumHand.MAIN_HAND) : player.getHeldItem(EnumHand.OFF_HAND);
-
         if (item instanceof FlyingApparatusItem) {
+
+
             NBTTagCompound nbt = chest.getTagCompound();
             if (nbt != null) {
                 if (!nbt.getBoolean(ACTIVE_NAME)) {
+                    final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
+                    if (player.isElytraFlying() && gameSettings.keyBindSprint.isKeyDown()) {
+                        final Vec3d forward = player.getForward();
+                        if (drainFuel(chest, 30)) {
+                            player.motionZ = forward.z * 10;
+                            player.motionY = forward.y * 10;
+                            player.motionX = forward.x * 10;
+                        }
+                    }
                     return;
                 }
             } else {
                 return;
             }
-
-
-            if (!(handItem.getItem() instanceof ApparatusHandHeld)) {
-                player.motionX = 0;
-                player.motionZ = 0;
-                return;
-            }
-
             final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
-            if (ClientProxy.BOOST.isKeyDown()) {
+            if (gameSettings.keyBindSprint.isKeyDown()) {
 
                 if (drainFuel(chest, 100, true)) {
                     player.motionY = 0;

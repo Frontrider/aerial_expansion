@@ -1,37 +1,83 @@
-package hu.frontrider.aerialexpansion.items.fluidItem;
+package hu.frontrider.aerialexpansion.items;
 
 import cofh.api.fluid.IFluidContainerItem;
 import cofh.core.init.CoreEnchantments;
 import cofh.core.item.IEnchantableItem;
 import hu.frontrider.aerialexpansion.AerialExpansion;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.item.Item;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
-public class ItemWithFluid extends Item implements IFluidContainerItem, IEnchantableItem {
+import static hu.frontrider.aerialexpansion.AerialExpansion.NullArmor;
 
+public class ArmorWithFluid extends ItemArmor implements IFluidContainerItem, IEnchantableItem {
+
+    final EntityEquipmentSlot slot;
+    String texture;
     protected String fluid;
-    protected int capacity;
+    private int capacity;
 
     public static String STORED = "stored";
 
-    public ItemWithFluid( Fluid fluid, int capacity,String name) {
-        this(fluid.getName(),capacity,name);
-    }
-    public ItemWithFluid(String fluid, int capacity,String name) {
+    public ArmorWithFluid(String fluid, int capacity, String name, EntityEquipmentSlot slot) {
+        super(NullArmor, 0, slot);
+        this.slot = slot;
+        BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
         this.fluid = fluid;
         this.capacity = capacity;
-
         this.maxStackSize = 1;
         this.setRegistryName(AerialExpansion.MODID, name);
         this.setUnlocalizedName(AerialExpansion.MODID + "." + name);
+    }
+
+    public ArmorWithFluid(Fluid fluid, int capacity, String name, EntityEquipmentSlot slot) {
+        this(fluid.getName(), capacity, name, slot);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack heldItem = player.getHeldItem(hand);
+        EntityEquipmentSlot slotForItemStack = EntityLiving.getSlotForItemStack(heldItem);
+        ItemStack stack = player.getItemStackFromSlot(slotForItemStack);
+        if (stack.isEmpty()) {
+            player.setItemStackToSlot(slotForItemStack, heldItem.copy());
+            heldItem.setCount(0);
+            return new ActionResult(EnumActionResult.SUCCESS, heldItem);
+        } else {
+            return new ActionResult(EnumActionResult.FAIL, heldItem);
+        }
+    }
+
+    @Nullable
+    @Override
+    public EntityEquipmentSlot getEquipmentSlot(ItemStack itemStack) {
+        return slot;
+    }
+
+    public boolean getIsRepairable(ItemStack p_getIsRepairable_1_, ItemStack p_getIsRepairable_2_) {
+        return false;
+    }
+
+    @Override
+    public boolean isDamageable() {
+        return false;
     }
 
     @Override
@@ -144,7 +190,7 @@ public class ItemWithFluid extends Item implements IFluidContainerItem, IEnchant
     }
 
     public static int getMax(ItemStack stack) {
-        return ((ItemWithFluid) stack.getItem()).capacity;
+        return ((ArmorWithFluid) stack.getItem()).capacity;
     }
 
 

@@ -7,9 +7,8 @@ import net.minecraftforge.common.config.Config;
 public class Configuration {
 
     @Config.Comment({
-            "if set to true, it will place item into the unified COHF creative tabs"
+            "if set to false items will use the vanilla tabs."
     })
-    public static boolean useThermalTabs=false;
-
+    public static boolean useCustomTabs=true;
 
 }
