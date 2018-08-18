@@ -9,10 +9,21 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+apply plugin: "com.matthewprenger.cursegradle"
+
 
 version = "1.0"
-group = "hu.frontrider.aerialexpansion" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "hu.frontrider.aerialexpansion"
 archivesBaseName = "aerialexpansion"
+
+curseforge {
+    apiKey = System.env.curse_api_key != null?System.env.curse_api_key:"111111"
+    project {
+        id =  System.env.project_id != null?System.env.project_id:"111111"
+        changelog = file("changelog.txt")
+        releaseType = System.env.release_type != null?System.env.release_type:"release"
+    }
+}
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {

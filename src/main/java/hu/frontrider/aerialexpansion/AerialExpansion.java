@@ -27,7 +27,7 @@ public class AerialExpansion {
     public static final String NAME = "Aerial Expansion";
     public static final String VERSION = "1.0-SNAPSHOT";
     public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
-    public static final String DEPENDENCIES = "required-after:thermalfoundation@[2.4.1,2.5.0);";
+    public static final String DEPENDENCIES = "required-after:thermalfoundation@[2.4.0,2.6.0);";
     public static Logger logger;
 
     public static CreativeTabs aerialTab = new CreativeTabCore(MODID) {

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "flyingapparatus",
+  "name": "Flying Apparatus",
+  "description": "Aerothenium powered flying apparatus.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Frontrider"],
+  "credits": "The guys on the Modded Minecraft Discord channel, and Team COFH for their help",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

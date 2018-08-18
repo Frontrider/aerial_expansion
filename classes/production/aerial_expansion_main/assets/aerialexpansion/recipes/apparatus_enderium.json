@@ -1,0 +1,28 @@
+{
+  "type": "aerialexpansion:armour_upgrade_shaped",
+  "result": {
+    "item": "aerialexpansion:apparatus_resonant"
+  },
+  "pattern": [
+    "GTG",
+    "P P",
+    "U U"
+  ],
+  "key": {
+    "G": {
+      "item": "thermalfoundation:material",
+      "data": 1024
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plateEnderium"
+    },
+    "U": {
+      "item": "thermalfoundation:upgrade",
+      "data": 3
+    },
+    "T": {
+      "item": "aerialexpansion:apparatus_signalum"
+    }
+  }
+}

@@ -21,18 +21,10 @@ public class ItemRegistry {
     public static final FlyingApparatusItem mmu_resonant = new FlyingApparatusItem( "apparatus_resonant", RESONANT,MODID+":textures/armor/resonant.png");
 
     public static final Item flux_tube = new Material("flux_tube");
-    public static final Item armor_frame = new Material("equipment_frame");
-
-    public static final Item thruster_basic = new Material("thruster_component_basic");
-    public static final Item thruster_hardened = new Material("thruster_component_hardened");
-    public static final Item thruster_reinforced = new Material("thruster_component_reinforced");
-    public static final Item thruster_signalum = new Material("thruster_component_signalum");
-    public static final Item thruster_resonant = new Material("thruster_component_resonant");
 
     public static final Item[] items = {
                 mmu_basic, mmu_hardened, mmu_reinforced, mmu_signalum, mmu_resonant,
-                flux_tube, armor_frame,
-                thruster_basic,thruster_hardened,thruster_reinforced,thruster_resonant,thruster_signalum
+                flux_tube
     };
 
     @SubscribeEvent

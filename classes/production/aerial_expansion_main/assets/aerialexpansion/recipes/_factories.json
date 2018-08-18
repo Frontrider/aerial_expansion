@@ -1,0 +1,5 @@
+{
+  "recipes": {
+    "armour_upgrade_shaped": "hu.frontrider.aerialexpansion.logic.UpgradeRecipe$Factory"
+  }
+}

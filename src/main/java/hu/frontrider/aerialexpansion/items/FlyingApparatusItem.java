@@ -80,12 +80,6 @@ public class FlyingApparatusItem extends ArmorWithFluid implements IEnchantableI
         }
         return texture;
     }
-
-    @Override
-    public boolean hasOverlay(ItemStack stack) {
-        return true;
-    }
-
     public boolean negatesFallDamage() {
         return tier.special;
     }

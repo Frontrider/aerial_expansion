@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "result": {
+    "item": "aerialexpansion:flux_tube"
+  },
+  "pattern": [
+    " G ",
+    "GCG",
+    " GI"
+  ],
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "blockGlassHardened"
+    },
+    "C": {
+      "item": "thermalfoundation:material",
+      "data":515
+    },
+    "I": {
+      "item": "thermalfoundation:material",
+      "data":164
+    }
+  }
+}
