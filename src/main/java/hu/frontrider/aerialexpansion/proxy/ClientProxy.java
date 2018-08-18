@@ -5,6 +5,7 @@ import hu.frontrider.aerialexpansion.registry.ItemRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -36,6 +37,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         super.init(event);
+
+
         registerKeyBinding(BOOST);
         registerKeyBinding(TOGGLE);
         initClient(Minecraft.getMinecraft().getRenderItem().getItemModelMesher());
@@ -48,6 +51,5 @@ public class ClientProxy extends CommonProxy {
             ModelLoader.registerItemVariants(item, model);
             mesher.register(item, 0, model);
         }
-
     }
 }

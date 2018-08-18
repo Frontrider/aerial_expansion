@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class AnimationHandler {
 
-    public static int ANIMATION_STATE = 1;
+    public static int ANIMATION_STATE = 0;
     private static int timer = 0;
 
     @SideOnly(Side.CLIENT)
@@ -24,8 +24,8 @@ public class AnimationHandler {
         if (timer > 10) {
             timer = 0;
             ANIMATION_STATE++;
-            if(ANIMATION_STATE>7)
-                ANIMATION_STATE =1;
+            if(ANIMATION_STATE>6)
+                ANIMATION_STATE =0;
         }
     }
 }

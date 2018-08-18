@@ -1,0 +1,28 @@
+{
+  "type": "aerialexpansion:armour_upgrade_shaped",
+  "result": {
+    "item": "aerialexpansion:apparatus_hardened"
+  },
+  "pattern": [
+    "GTG",
+    "P P",
+    "U U"
+  ],
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "gearBronze"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plateInvar"
+    },
+    "U": {
+      "item": "thermalfoundation:upgrade",
+      "data":0
+    },
+    "T": {
+      "item": "aerialexpansion:apparatus_basic"
+    }
+  }
+}

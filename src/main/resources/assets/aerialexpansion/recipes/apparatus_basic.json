@@ -1,0 +1,28 @@
+{
+  "type": "forge:ore_shaped",
+  "result": {
+    "item": "aerialexpansion:apparatus_basic"
+  },
+  "pattern": [
+    "BGB",
+    "P P",
+    "T T"
+  ],
+  "key": {
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "gearConstantan"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plateSteel"
+    },
+    "B": {
+      "item": "thermalfoundation:material",
+      "data":833
+    },
+    "T": {
+      "item": "aerialexpansion:flux_tube"
+    }
+  }
+}

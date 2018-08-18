@@ -47,6 +47,7 @@ public class AerialExpansion {
         logger = event.getModLog();
         proxy.preInit();
         NullArmor = EnumHelper.addArmorMaterial("AE:NULL","null",0,new int[]{0,0,0,0},0,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0F);
+
     }
 
     @SidedProxy(clientSide = "hu.frontrider.aerialexpansion.proxy.ClientProxy", serverSide = "hu.frontrider.aerialexpansion.proxy.ServerProxy")

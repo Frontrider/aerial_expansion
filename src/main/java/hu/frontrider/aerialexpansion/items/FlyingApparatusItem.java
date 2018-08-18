@@ -4,61 +4,36 @@ import cofh.core.item.IEnchantableItem;
 import cofh.core.util.capabilities.FluidContainerItemWrapper;
 import cofh.core.util.helpers.StringHelper;
 import cofh.thermalfoundation.init.TFFluids;
-import hu.frontrider.aerialexpansion.AerialExpansion;
-import net.minecraft.client.renderer.color.IItemColor;
+import hu.frontrider.aerialexpansion.client.AnimationHandler;
+import hu.frontrider.aerialexpansion.logic.TierRegistry;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 import javax.annotation.Nullable;
-import java.awt.*;
 import java.util.List;
 
+import static hu.frontrider.aerialexpansion.AerialExpansion.MODID;
+import static hu.frontrider.aerialexpansion.AerialExpansion.NullArmor;
 import static hu.frontrider.aerialexpansion.AerialExpansion.aerialTab;
-import static hu.frontrider.aerialexpansion.client.AnimationHandler.ANIMATION_STATE;
 
 
-public class FlyingApparatusItem extends ArmorWithFluid implements IEnchantableItem, IItemColor {
+public class FlyingApparatusItem extends ArmorWithFluid implements IEnchantableItem {
 
     public static final String ACTIVE_NAME = "active";
+    private final TierRegistry.Tier tier;
 
-    private final boolean negatesFallDamage;
-    private final double movementFactor;
-    private final int fallDamageCost;
-    private int tier = 0;
+    public FlyingApparatusItem(String registryName,TierRegistry.Tier tier,String texture) {
+        super(TFFluids.fluidAerotheum, tier.capacity, registryName, EntityEquipmentSlot.LEGS);
 
-    private static final int[] TIERS = {
-            8289918, 13095368, 2719615, 14041361, 2719615
-    };
-
-    private static final int[] ARMOR_COLORS = {
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
-
-    public FlyingApparatusItem(int capacity, String registryName) {
-        this(capacity, registryName, false, 500, .1, 0);
-    }
-
-    public FlyingApparatusItem(int capacity, String registryName, boolean negatesFallDamage, int fallDamageCost) {
-        this(capacity, registryName, negatesFallDamage, fallDamageCost, .1, 0);
-    }
-
-    public FlyingApparatusItem(int capacity, String registryName, boolean negatesFallDamage, int fallDamageCost, int tier) {
-        this(capacity, registryName, negatesFallDamage, fallDamageCost, .1, tier);
-    }
-
-    public FlyingApparatusItem(int capacity, String registryName, boolean negatesFallDamage, int fallDamageCost, double movementFactor, int tier) {
-        super(TFFluids.fluidAerotheum, capacity, registryName, EntityEquipmentSlot.LEGS);
-        this.negatesFallDamage = negatesFallDamage;
-        this.movementFactor = movementFactor;
-        this.fallDamageCost = fallDamageCost;
         this.setCreativeTab(aerialTab);
-        this.texture = AerialExpansion.MODID + ":textures/armor/" + registryName;
+        this.texture = texture;
         this.tier = tier;
     }
 
@@ -71,7 +46,7 @@ public class FlyingApparatusItem extends ArmorWithFluid implements IEnchantableI
     public void addInformation(ItemStack itemStack, @Nullable World world, List<String> information, ITooltipFlag flag) {
         information.add(StringHelper.getInfoText("info.aerialexpansion.apparatus_description.def"));
         information.add(StringHelper.getInfoText("info.aerialexpansion.apparatus_description.fuel"));
-        if (negatesFallDamage) {
+        if (tier.special) {
             StringHelper.getNoticeText(StringHelper.localize("info.aerialexpansion.apparatus_description.fall_damage"));
         }
         final int stored = getStored(itemStack);
@@ -94,29 +69,33 @@ public class FlyingApparatusItem extends ArmorWithFluid implements IEnchantableI
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        if (slot == this.slot) {
-            if (stack.hasTagCompound()) {
-                final NBTTagCompound nbt = stack.getTagCompound();
-                if (nbt.hasKey(ACTIVE_NAME) && nbt.hasKey(STORED)) {
-                    if (nbt.getBoolean(ACTIVE_NAME) && nbt.getInteger(STORED)>0)
-                        return texture + "_" + ANIMATION_STATE + ".png";
-                }
-            }
-            return texture + "_off.png";
+        if(type != null && type.equals("overlay"))
+        {
+            return MODID+":textures/armor/animation"+
+                    (((ItemArmor)stack.getItem()).getArmorMaterial() == NullArmor? "":"_"+((FlyingApparatusItem)stack.getItem()).getTier().name)+
+                    "_"+
+                    (stack.getTagCompound().getBoolean(ACTIVE_NAME)?AnimationHandler.ANIMATION_STATE:"off")+
+                    ".png"
+                    ;
         }
-        return null;
+        return texture;
+    }
+
+    @Override
+    public boolean hasOverlay(ItemStack stack) {
+        return true;
     }
 
     public boolean negatesFallDamage() {
-        return negatesFallDamage;
+        return tier.special;
     }
 
     public double getMotion() {
-        return movementFactor;
+        return tier.factor;
     }
 
     public int getFallDamageCost() {
-        return fallDamageCost;
+        return tier.cost;
     }
 
     /* CAPABILITIES */
@@ -139,34 +118,18 @@ public class FlyingApparatusItem extends ArmorWithFluid implements IEnchantableI
     }
 
     public static void handleBoost(FlyingApparatusItem item, EntityPlayer player, double dirX, double dirY, double dirZ) {
-        player.motionX = dirX * (float) item.getMotion() * 3;
-        player.motionZ = dirZ * (float) item.getMotion() * 3;
-        player.motionY = dirY * (float) item.getMotion() * 3;
-    }
-
-    @Override
-    public int colorMultiplier(ItemStack itemStack, int tintIndex) {
-        switch (tintIndex) {
-            case 0:
-                return Color.WHITE.getRGB();
-            case 1: {
-                if (itemStack.hasTagCompound()) {
-                    return TIERS[tier];
-                }
-            }
-            default: {
-                return Color.BLACK.getRGB();
-            }
-        }
-    }
-
-    @Override
-    public boolean hasColor(ItemStack itemStack) {
-        return true;
+        player.motionX = dirX * (float) item.getMotion() * item.tier.factor*3;
+        player.motionZ = dirZ * (float) item.getMotion() * item.tier.factor*3;
+        player.motionY = dirY * (float) item.getMotion() * item.tier.factor*3;
     }
 
     @Override
     public boolean getIsRepairable(ItemStack p_getIsRepairable_1_, ItemStack p_getIsRepairable_2_) {
         return super.getIsRepairable(p_getIsRepairable_1_, p_getIsRepairable_2_);
     }
+
+    public TierRegistry.Tier getTier() {
+        return tier;
+    }
+
 }
